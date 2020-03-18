@@ -1,0 +1,84 @@
+.post {
+	.card {
+		#layout.block;
+		#layout.card;
+
+		&.hover:hover {
+			overflow: hidden;
+			box-shadow: -2px 4px 16px -10px rgba(0,0,0,0.38);
+			background-color: @color-dark;
+
+			.poster {
+				overflow: visible;
+				img { filter: brightness(85%); }
+			}
+			.title {
+				color: #ffffff;
+				heigh: 0;
+				span {
+					position: relative;
+					top: -2em;
+				}
+				//animation-name: flow;
+				//animation-duration: 1s;
+			}
+		}
+
+		.poster {
+			width: 100%;
+			background-color: @color-dark;
+			height: 8em;
+			overflow: hidden;
+
+
+			img {
+				min-width: 100%;
+				min-heigh: 100%;
+			}
+		}
+		.title {
+			font-size: 2em;
+			text-align: center;
+			margin: @spacing-small;
+		}
+	}
+	.tags {
+		list-style-type: none;
+		padding: @spacing-small;
+		margin-top: 0px;
+
+		li {
+			display: inline-block;
+			margin-right: @spacing-small;
+			a {
+				text-decoration: none;
+				color: @color-accent;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+			&:before {
+				content: "#";
+			}
+		}
+	}
+}
+
+@keyframes flow {
+  from {height: auto;}
+  to {height: 0;}
+}
+/*
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+}
+
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}*/

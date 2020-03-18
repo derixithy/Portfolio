@@ -1,0 +1,22 @@
+@quadrants: top, right, bottom, left;
+//@sizes: small, medium, large;
+
+
+.loop-quadrants(@type, @variant, @value, @count: length(@quadrants) ) when (@count > 0) {
+	@quadrant: extract(@quadrants, @count);
+
+	.@{type}-@{variant}-@{quadrant} {
+		@{type}-@{quadrant}: @value;
+	}
+
+	.loop-quadrants(@type, @variant, @value, @count - 1);
+}
+
+
+.loop-quadrants(padding, small, @spacing-small);
+.loop-quadrants(padding, medium, @spacing-medium);
+.loop-quadrants(padding, large, @spacing-large);
+
+.loop-quadrants(margin, small, @spacing-small);
+.loop-quadrants(margin, medium, @spacing-medium);
+.loop-quadrants(margin, large, @spacing-large);

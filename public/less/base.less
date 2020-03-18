@@ -1,0 +1,164 @@
+/* less: 3.5;
+#color() {
+	primary:#000000;
+}
+
+color: #color[primary];
+*/
+
+
+@import 'settings';
+@import 'toolkit';
+@import 'layout';
+@import 'nav';
+@import 'grid';
+@import 'post'; // depends: layout;
+
+
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+	background-color: @color-background;
+	color: @color-dark;
+}
+
+.muted {
+	&, &:hover, &:active, &:visited, &:link {
+		color: @color-dark;
+		text-decoration: none;
+	}
+}
+
+nav {
+	#navbar();
+	//&:extend(.container);
+
+	a {
+		&:extend(.muted);
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.menu {
+		#navbar.grow();
+		text-align: center;
+		a { padding: 0 @spacing-medium; }
+	}
+
+	.links .active {
+		font-weight: bold;
+	}
+}
+
+.cover {
+	#layout.cover();
+}
+
+.heading {
+	#layout.base();
+
+	h1 {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.container {
+	#grid(@min: 100%);
+}
+
+.grid {
+	#grid();
+
+	.column {
+		#grid.columns();
+		#grid.columns(5,6);
+	}
+
+	.offset {
+		#grid.offsets();
+	}
+}
+
+main, aside {
+	#layout.base();
+
+}
+
+article {
+	&:first-child h2 { margin-top: 0px; } // Remove top margin first article
+}
+
+ul.menu {
+	#navmenu();
+}
+
+
+footer {
+	&:extend(.container);
+	margin-top: 2em;
+
+	p {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+
+@media screen and (min-width: 768px) {
+	.hide-on-desktop {
+			display: none !important;
+			width: 0;
+			height: 0;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	body {
+		min-width: 360px;
+	}
+
+	nav {
+		#navbar.mobile();
+		ul li a:hover {
+			background-color: darken(@color-background, 2%);
+			text-decoration: none;
+		}
+	}
+
+	.grid {
+		#grid(100%, 360px);
+
+		[class^="column-"] {
+			width: auto;
+			float: none;
+			margin: @spacing-small 0;
+		}
+
+		.mobile-column {
+			#grid.columns(5, 6);
+			padding-right: @spacing-small;
+			padding-left: @spacing-medium;
+			margin: 0 0 @spacing-small;
+		}
+
+		.mobile-offset {
+			#grid.offsets(5, 6);
+		}
+	}
+	.hide-on-mobile {
+		display: none !important;
+		width: 0;
+		height: 0;
+	}
+}

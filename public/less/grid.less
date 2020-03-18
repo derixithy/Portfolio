@@ -1,0 +1,49 @@
+#grid(@max: @size-max, @min: @size-min) {
+	width: 100%;
+	max-width: @max;
+	min-width: @min;
+	margin: 0 auto;
+	overflow: hidden;
+	&:after {
+		content: "";
+		display:table;
+		clear:both;
+	}
+
+	.column(@size: 11, @max: 12) {
+		& when(@size < @max) {
+			&-@{size}-@{max} {
+				float: left;
+				min-height: 1px;
+				padding-right: @spacing-medium;
+				width: 100% / @max * @size;
+				
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+
+	.columns(@size: 11, @max: 12) when (@size > 0) {
+		& when(@size < @max) {
+			.column(@size, @max);
+		}
+		
+		.columns(@size - 1, @max);
+	}
+
+	.offset(@size: 11, @max: 12) {
+		&-@{size} {
+			margin-left: 100% / @max * @size;
+		}
+	}
+
+	.offsets(@size: 11, @max: 12) when (@size > 0) {
+		&-@{size} {
+			.offset(@size, @max)
+		}
+
+		.offsets(@size - 1);
+	}
+}
