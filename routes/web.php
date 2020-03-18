@@ -25,7 +25,7 @@ Route::get('{name}.html', 'PageController@show')
 	->where('name', '[A-Za-z]+')
 	->name('page');
 
-Route::get('{name}/{project}', 'ProjectController@show')
+    Route::get('{name}/{project}', 'ProjectController@show')
 	->where('name', '[A-Za-z]+')
 	->where('project', '[A-Za-z]+')
 	->name('project');

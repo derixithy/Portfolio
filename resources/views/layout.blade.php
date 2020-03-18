@@ -35,12 +35,21 @@
 		</div>
 	</nav>
 	<div class="container">
-		<div class="cover large">
+		<div class="cover @yield('cover-size', 'large')">
 			<img src="@yield('cover', 'img/over.jpg')" alt="heading">
 		</div>
 		<div class="heading">
 			<h1>@yield('page-title', 'Undefined')</h1>
 		</div>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @section('main')
 		<main>
 

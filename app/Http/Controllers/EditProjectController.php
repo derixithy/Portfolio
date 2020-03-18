@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Project;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use App\Http\Requests\ValidatePage;
 
 class EditProjectController extends Controller
 {
@@ -38,7 +39,7 @@ class EditProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidateProject $request)
     {
         //
     }
@@ -72,7 +73,7 @@ class EditProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ValidateProject $request, Project $project)
     {
         //
     }

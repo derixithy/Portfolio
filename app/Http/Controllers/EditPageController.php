@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Page;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use App\Http\Requests\ValidatePage;
 
 class EditPageController extends PageController
 {
@@ -39,7 +40,7 @@ class EditPageController extends PageController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidatePage $request)
     {
         //
     }
@@ -73,7 +74,7 @@ class EditPageController extends PageController
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(ValidatePage $request, Page $page)
     {
         //
     }
