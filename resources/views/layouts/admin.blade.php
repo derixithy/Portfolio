@@ -38,9 +38,6 @@
 @include('shared.errors')
 @section('main')
 		<main>
-			@include('shared.errors')
-
-
 			@yield('content')
 		</main>
 @show
