@@ -25,11 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::resourceVerbs([
-            'create' => 'nieuw',
-            'edit' => 'wijzig',
-            'delete' => 'verwijder',
-        ]);
 
         View::share('menu', \App\Page::published()->get());
         View::share('modules', [
