@@ -223,6 +223,10 @@ body {
 nav a {
   color: #242423;
   text-decoration: none;
+  line-height: 105%;
+}
+.muted:hover {
+  font-weight: bold;
 }
 nav {
   display: flex;
@@ -371,6 +375,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 91.66666667%;
+  margin-bottom: 0.3em;
 }
 .grid .column-11-12:last-child {
   padding-right: 0;
@@ -380,6 +385,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 83.33333333%;
+  margin-bottom: 0.3em;
 }
 .grid .column-10-12:last-child {
   padding-right: 0;
@@ -389,6 +395,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 75%;
+  margin-bottom: 0.3em;
 }
 .grid .column-9-12:last-child {
   padding-right: 0;
@@ -398,6 +405,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 66.66666667%;
+  margin-bottom: 0.3em;
 }
 .grid .column-8-12:last-child {
   padding-right: 0;
@@ -407,6 +415,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 58.33333333%;
+  margin-bottom: 0.3em;
 }
 .grid .column-7-12:last-child {
   padding-right: 0;
@@ -416,6 +425,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 50%;
+  margin-bottom: 0.3em;
 }
 .grid .column-6-12:last-child {
   padding-right: 0;
@@ -425,6 +435,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 41.66666667%;
+  margin-bottom: 0.3em;
 }
 .grid .column-5-12:last-child {
   padding-right: 0;
@@ -434,6 +445,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 33.33333333%;
+  margin-bottom: 0.3em;
 }
 .grid .column-4-12:last-child {
   padding-right: 0;
@@ -443,6 +455,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 25%;
+  margin-bottom: 0.3em;
 }
 .grid .column-3-12:last-child {
   padding-right: 0;
@@ -452,6 +465,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 16.66666667%;
+  margin-bottom: 0.3em;
 }
 .grid .column-2-12:last-child {
   padding-right: 0;
@@ -461,6 +475,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 8.33333333%;
+  margin-bottom: 0.3em;
 }
 .grid .column-1-12:last-child {
   padding-right: 0;
@@ -470,6 +485,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 83.33333333%;
+  margin-bottom: 0.3em;
 }
 .grid .column-5-6:last-child {
   padding-right: 0;
@@ -479,6 +495,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 66.66666667%;
+  margin-bottom: 0.3em;
 }
 .grid .column-4-6:last-child {
   padding-right: 0;
@@ -488,6 +505,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 50%;
+  margin-bottom: 0.3em;
 }
 .grid .column-3-6:last-child {
   padding-right: 0;
@@ -497,6 +515,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 33.33333333%;
+  margin-bottom: 0.3em;
 }
 .grid .column-2-6:last-child {
   padding-right: 0;
@@ -506,6 +525,7 @@ footer {
   min-height: 1px;
   padding-right: 0.8em;
   width: 16.66666667%;
+  margin-bottom: 0.3em;
 }
 .grid .column-1-6:last-child {
   padding-right: 0;
@@ -648,6 +668,7 @@ footer p {
     min-height: 1px;
     padding-right: 0.8em;
     width: 83.33333333%;
+    margin-bottom: 0.3em;
   }
   .grid .mobile-column-5-6:last-child {
     padding-right: 0;
@@ -657,6 +678,7 @@ footer p {
     min-height: 1px;
     padding-right: 0.8em;
     width: 66.66666667%;
+    margin-bottom: 0.3em;
   }
   .grid .mobile-column-4-6:last-child {
     padding-right: 0;
@@ -666,6 +688,7 @@ footer p {
     min-height: 1px;
     padding-right: 0.8em;
     width: 50%;
+    margin-bottom: 0.3em;
   }
   .grid .mobile-column-3-6:last-child {
     padding-right: 0;
@@ -675,6 +698,7 @@ footer p {
     min-height: 1px;
     padding-right: 0.8em;
     width: 33.33333333%;
+    margin-bottom: 0.3em;
   }
   .grid .mobile-column-2-6:last-child {
     padding-right: 0;
@@ -684,6 +708,7 @@ footer p {
     min-height: 1px;
     padding-right: 0.8em;
     width: 16.66666667%;
+    margin-bottom: 0.3em;
   }
   .grid .mobile-column-1-6:last-child {
     padding-right: 0;
