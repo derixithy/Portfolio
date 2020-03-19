@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.web')
 @section('page-title', __('Register'))
 
 @section('content')

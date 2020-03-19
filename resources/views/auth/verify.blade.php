@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.web')
 @section('page-title', __('Verify Your Email Address'))
 
 @section('content')

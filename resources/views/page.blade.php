@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.web')
 
 @section('page-title', $page->title)
 @section('cover', $page->cover)
