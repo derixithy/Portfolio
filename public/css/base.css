@@ -245,7 +245,7 @@ nav ul {
 }
 nav ul li {
   display: inline-block;
-  min-width: 8em;
+  padding: 0.3em;
 }
 nav ul li a {
   color: #242423;
@@ -261,7 +261,7 @@ nav ul li a:hover {
   border-bottom-color: #1985a1;
 }
 nav ul li {
-  min-width: 11em;
+  padding: 0.8em;
 }
 nav label.burgermenu,
 nav #hamburger {
@@ -305,7 +305,7 @@ ul.subnav {
 }
 ul.subnav li {
   display: inline-block;
-  min-width: 8em;
+  padding: 0.3em;
 }
 ul.subnav li a {
   color: #242423;
