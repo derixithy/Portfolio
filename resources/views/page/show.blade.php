@@ -4,6 +4,7 @@
 
 @if($projects)
 @section('content')
+	<div class="grid">
 		@foreach($projects as $project)
 		<article class="@if( $loop->first ) column-6-12 @else column-3-12 @endif mobile-column-3-6">
 			<a href="{{ route('project', [$slug, $project->name]) }}" class="muted">
@@ -23,6 +24,6 @@
 			</a>
 		</article>
 		@endforeach
-	</main>
+	</div>
 @endsection
 @endif
