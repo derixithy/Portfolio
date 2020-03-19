@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,14 @@ class AppServiceProvider extends ServiceProvider
             'create' => 'nieuw',
             'edit' => 'wijzig',
             'delete' => 'verwijder',
+        ]);
+
+        View::share('menu', \App\Page::published()->get());
+        View::share('modules', [
+            'page' => 'Pagina\'s',
+            'project' => 'Projecten',
+            'tag' => 'Tags',
+            'user' => 'Gebruikers'
         ]);
     }
 }
