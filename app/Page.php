@@ -20,6 +20,12 @@ class Page extends Model
 
     public static function draft()
     {
-    	return self::whereStatus('draft');
+    	return self::whereStatus('DRAFT');
+    }
+
+    public static function list()
+    {
+        return self::where('status', '!=', 'DELETED');
     }
 }
+
