@@ -23,7 +23,8 @@ class EditPageController extends Controller
     {
         $data = [
             'title' => 'Pagina\'s',
-            'pages' => Page::all()
+            'pages' => Page::list()->get(),
+            'deleted' => Page::trash()->get()
         ];
 
 
@@ -49,7 +50,7 @@ class EditPageController extends Controller
      */
     public function store(ValidatePage $request)
     {
-        //
+        redirect('admin/page');
     }
 
     /**
@@ -71,7 +72,7 @@ class EditPageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return $this->index($page);
     }
 
     /**
