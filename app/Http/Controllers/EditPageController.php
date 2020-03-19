@@ -6,7 +6,7 @@ use App\Page;
 //use Illuminate\Http\Request;
 use App\Http\Requests\ValidatePage;
 
-class EditPageController extends PageController
+class EditPageController extends Controller
 {
 
     public function __construct()
@@ -23,7 +23,7 @@ class EditPageController extends PageController
     {
         $data = [
             'title' => 'Pagina\'s',
-            'pages' => Page::whereStatus('ACTIVE')->get()
+            'pages' => Page::all()
         ];
 
 
