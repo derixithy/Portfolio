@@ -6,7 +6,7 @@
 @if($page->name == 'portfolio')
 @section('main')
 	<main class="grid">
-		<article class="column-12-12 margin-large-bottom" style="border-bottom: 1px solid #929292;">
+		<article class="column-12-12 margin-huge-bottom">
 			<p class="padding-small-bottom">{{$page->content}}</p>
 		</article>
 

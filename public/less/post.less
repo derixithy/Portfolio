@@ -6,7 +6,7 @@
 		&.hover:hover {
 			overflow: hidden;
 			box-shadow: -2px 4px 16px -10px rgba(0,0,0,0.38);
-			background-color: @color-dark;
+			background-color: #color[dark];
 
 			.poster {
 				overflow: visible;
@@ -26,7 +26,7 @@
 
 		.poster {
 			width: 100%;
-			background-color: @color-dark;
+			background-color: #color[dark];
 			height: 8em;
 			overflow: hidden;
 
@@ -39,20 +39,20 @@
 		.title {
 			font-size: 2em;
 			text-align: center;
-			margin: @spacing-small;
+			margin: #spacing[small];
 		}
 	}
 	.tags {
 		list-style-type: none;
-		padding: @spacing-small;
+		padding: #spacing[small];
 		margin-top: 0px;
 
 		li {
 			display: inline-block;
-			margin-right: @spacing-small;
+			margin-right: #spacing[small];
 			a {
 				text-decoration: none;
-				color: @color-accent;
+				color: #color[accent];
 
 				&:hover {
 					text-decoration: underline;
@@ -69,16 +69,3 @@
   from {height: auto;}
   to {height: 0;}
 }
-/*
-div {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  animation-name: example;
-  animation-duration: 4s;
-}
-
-@keyframes example {
-  from {background-color: red;}
-  to {background-color: yellow;}
-}*/

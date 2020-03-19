@@ -13,10 +13,31 @@
 }
 
 
-.loop-quadrants(padding, small, @spacing-small);
-.loop-quadrants(padding, medium, @spacing-medium);
-.loop-quadrants(padding, large, @spacing-large);
+.loop-quadrants(padding, small, #spacing[small]);
+.loop-quadrants(padding, medium, #spacing[medium]);
+.loop-quadrants(padding, large, #spacing[large]);
+.loop-quadrants(padding, huge, #spacing[huge]);
 
-.loop-quadrants(margin, small, @spacing-small);
-.loop-quadrants(margin, medium, @spacing-medium);
-.loop-quadrants(margin, large, @spacing-large);
+.loop-quadrants(margin, small, #spacing[small]);
+.loop-quadrants(margin, medium, #spacing[medium]);
+.loop-quadrants(margin, large, #spacing[large]);
+
+.loop-quadrants(margin, huge, #spacing[huge]);
+
+
+
+.light { color: #color[light]; }
+.light-background {
+	color: #color[dark];
+	background-color: #color[light];
+}
+
+.dark { color: #color[dark]; }
+.dark-background {
+	color: #color[light];
+	background-color: #color[dark];
+}
+
+.text-center {
+	text-align: center;
+}

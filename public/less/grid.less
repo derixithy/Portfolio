@@ -1,6 +1,6 @@
-#grid(@max: @size-max, @min: @size-min) {
+#grid(@max: #size[max], @min: #size[min]) {
 	width: 100%;
-	max-width: @max;
+	max-width: max;
 	min-width: @min;
 	margin: 0 auto;
 	overflow: hidden;
@@ -15,7 +15,7 @@
 			&-@{size}-@{max} {
 				float: left;
 				min-height: 1px;
-				padding-right: @spacing-medium;
+				padding-right: #spacing[medium];
 				width: 100% / @max * @size;
 				
 				&:last-child {
