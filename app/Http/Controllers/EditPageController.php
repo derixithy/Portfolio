@@ -21,7 +21,14 @@ class EditPageController extends PageController
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Pagina\'s',
+            'pages' => Page::whereStatus('ACTIVE')->get()
+        ];
+
+
+
+        return view('page.index')->with($data);
     }
 
     /**

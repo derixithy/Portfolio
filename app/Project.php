@@ -22,4 +22,5 @@ class Project extends Model
     {
     	return self::whereStatus('draft');
     }
+
 }

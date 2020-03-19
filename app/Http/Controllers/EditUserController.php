@@ -7,14 +7,28 @@ use Illuminate\Http\Request;
 
 class EditUserController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Gebruikers',
+            'users' => Users::all()->map(function($user){
+                return [
+                    'id' => $user->id,
+                    'name' => $user->name
+                ];
+            })
+        ];
+
+
+
+        return view('user.index')->with($data);
     }
 
     /**
