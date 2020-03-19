@@ -2,25 +2,29 @@
 	.card {
 		#layout.block;
 		#layout.card;
+		box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.13);
+		border-radius: #spacing[small];
 
-		&.hover:hover {
-			overflow: hidden;
-			box-shadow: -2px 4px 16px -10px rgba(0,0,0,0.38);
-			background-color: #color[dark];
+		&.hover {
+			&:hover {
+				overflow: hidden;
+				box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.4);
+				background-color: #color[dark];
 
-			.poster {
-				overflow: visible;
-				img { filter: brightness(85%); }
-			}
-			.title {
-				color: #ffffff;
-				heigh: 0;
-				span {
-					position: relative;
-					top: -2em;
+				.poster {
+					overflow: visible;
+					img { filter: brightness(85%); }
 				}
-				//animation-name: flow;
-				//animation-duration: 1s;
+				.title {
+					color: #ffffff;
+					heigh: 0;
+					span {
+						position: relative;
+						top: -2em;
+						animation-name: fadein;
+						animation-duration: 1s;
+					}
+				}
 			}
 		}
 
@@ -36,6 +40,7 @@
 				min-heigh: 100%;
 			}
 		}
+
 		.title {
 			font-size: 2em;
 			text-align: center;
@@ -65,7 +70,11 @@
 	}
 }
 
-@keyframes flow {
-  from {height: auto;}
-  to {height: 0;}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
