@@ -1,13 +1,10 @@
 @extends('layouts.admin')
 
-@section('page-title', $page->title)
+@section('page-title', $title)
 
-@if($projects)
-@section('main')
+@if($pages)
+@section('content')
 	<main class="grid">
-		<article class="column-12-12 margin-huge-bottom">
-			<p class="padding-small-bottom">{{$page->content}}</p>
-		</article>
 
 		<ul>
 		@foreach($pages as $page)
@@ -17,8 +14,3 @@
 	</main>
 @endsection
 @endif
-@section('content')
-<article>
-	{{ $page->content }}
-</article>
-@endsection
