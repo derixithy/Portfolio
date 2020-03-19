@@ -53,15 +53,7 @@
 		<div class="heading">
 			<h1>@yield('page-title', 'Undefined')</h1>
 		</div>
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@include('shared.errors')
 @section('main')
 		<main>
 
