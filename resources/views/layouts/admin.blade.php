@@ -17,26 +17,18 @@
 			<label for="hamburger" class="burgermenu">&#9776; Portfolio</label>
 			<input type="checkbox" id="hamburger"/>
 			<ul class="links">
-				@foreach(\App\Page::published()->get() as $page)
-				<li><a href="{{ route('page', $page->name) }}" @if(isset($slug) and $slug == $page->name)class="active"@endif>{{$page->title}}</a>
+				@foreach($menu as $page)
+				<li><a href="{{ route('page', $page->name) }}">{{$page->title}}</a>
 				@endforeach
 			</ul>
 		</div>
 		<div class="search hide-on-mobile">
-            @guest
-                    <a href="{{ route('login') }}"><i class="fas fa-fingerprint"></i></a>
-            @else
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
-                @endif
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i></a>
-            @endguest
 			<a href="{{ route('search') }}"><i class="fas fa-search"></i></a>
 		</div>
 	</nav>
 	<ul class="subnav">
-		@foreach( $modules as $page )
-		<li><a href="{{ url('admin/'.$page->name) }}">{{ $page->title }}</a></li>
+		@foreach( $modules as $name => $title)
+		<li><a href="{{ url('admin/'.$name) }}">{{ $title }}</a></li>
 		@endforeach
 	</ul>
 	<div class="container">
@@ -54,10 +46,8 @@
 @endif
 @section('main')
 		<main>
+			@include('shared.errors')
 
-			@error('title')
-				<div class="alert alert-danger">{{ $message }}</div>
-			@enderror
 
 			@yield('content')
 		</main>
