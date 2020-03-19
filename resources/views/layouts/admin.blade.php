@@ -34,10 +34,12 @@
 			<a href="{{ route('search') }}"><i class="fas fa-search"></i></a>
 		</div>
 	</nav>
+	<ul class="subnav">
+		@foreach( $modules as $page )
+		<li><a href="{{ url('admin/'.$page->name) }}">{{ $page->title }}</a></li>
+		@endforeach
+	</ul>
 	<div class="container">
-		<div class="cover @yield('cover-size', 'large')">
-			<img src="@yield('cover', 'img/over.jpg')" alt="heading">
-		</div>
 		<div class="heading">
 			<h1>@yield('page-title', 'Undefined')</h1>
 		</div>
