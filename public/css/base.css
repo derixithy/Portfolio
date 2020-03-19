@@ -564,8 +564,7 @@ ul.menu li.title {
   margin-bottom: 0.3em;
 }
 ul.menu li.separator {
-  border-bottom: 1px solid #cfdbd5;
-  margin: 0.8em;
+  height: 1.2em;
 }
 ul.menu li.canceled:before {
   content: "× " !important;
