@@ -35,7 +35,7 @@
 		<div class="heading">
 			<h1>@yield('page-title', 'Undefined')</h1>
 		</div>
-@import('shared.errors')
+@include('shared.errors')
 @section('main')
 		<main>
 			@include('shared.errors')
