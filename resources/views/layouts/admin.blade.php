@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>@yield('page-title', 'Undefined') - Portfolio Eddie Gjaltema</title>
+	<title>@yield('page-title', 'Adminstration') - Portfolio Eddie Gjaltema</title>
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="/css/base.css" />
@@ -33,7 +33,7 @@
 	</ul>
 	<div class="container">
 		<div class="heading">
-			<h1>@yield('page-title', 'Undefined')</h1>
+			<h1>@yield('page-title', 'Administation')</h1>
 		</div>
 @include('shared.errors')
 @section('main')
