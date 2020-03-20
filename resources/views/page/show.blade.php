@@ -1,12 +1,19 @@
 @extends('layouts.web')
 
-@section('page-title', 'Projecten')
+@section('page-title', $page->title)
+@section('cover', $page->cover)
 
-@if($projects)
 @section('content')
+	<article>
+		<div class="text">
+			{{$page->content}}
+		</div>
+	</article>
+@if($projects)
+	<div class="margin-huge-bottom"></div>
 	<div class="grid">
 		@foreach($projects as $project)
-		<article class="@if( $loop->first ) column-6-12 @else column-3-12 @endif mobile-column-3-6">
+		<div class="@if( $loop->first ) column-6-12 @else column-3-12 @endif mobile-column-3-6">
 			<a href="{{ route('project', [$slug, $project->name]) }}" class="muted">
 				<div class="post">
 					<div class="card hover">
@@ -22,8 +29,8 @@
 					</ul>
 				</div>
 			</a>
-		</article>
+		</div>
 		@endforeach
 	</div>
-@endsection
 @endif
+@endsection
