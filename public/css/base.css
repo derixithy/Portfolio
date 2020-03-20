@@ -215,6 +215,13 @@ body {
   background-color: #f8f8f8;
   color: #242423;
   border-top: 0.3em solid #1985a1;
+  font-family: 'Nunito';
+}
+.text {
+  font-family: 'Poiret One';
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  color: #3e3e3c;
 }
 .muted,
 .muted:hover,
@@ -601,6 +608,7 @@ ul.menu li.box.false:before {
 }
 footer {
   padding: 4em;
+  color: #72726e;
 }
 footer p {
   width: 100%;
