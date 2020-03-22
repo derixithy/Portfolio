@@ -36,19 +36,18 @@
 			</ul>
 		</div>
 		<div class="search hide-on-mobile">
-            @guest
-                    <a href="{{ route('login') }}"><i class="fas fa-fingerprint"></i></a>
-            @else
+            @auth
+                    <a href="{{ route('page.index') }}"><i class="fas fa-lock"></i></a>
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
                 @endif
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i></a>
-            @endguest
+            @endauth
 			<a href="{{ route('search') }}"><i class="fas fa-search"></i></a>
 		</div>
 	</nav>
 	<div class="container">
-		<div class="cover @yield('cover-size', 'large')">
+		<div class="cover @yield('cover-size', '')">
 			<img src="@yield('cover', 'img/over.jpg')" alt="heading">
 		</div>
 		<div class="heading">
@@ -67,7 +66,7 @@
 @show
 	</div>
 	<footer>
-		<p>&copy; Copyright 2020 - Eddie Gjaltema</p>
+		<p>&copy; Copyright 2020 - Eddie Gjaltema @guest - <a href="{{ route('login') }}" class="muted">login</a> @endguest</p>
 	</footer>
 	@auth
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
