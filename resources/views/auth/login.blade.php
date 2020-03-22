@@ -31,9 +31,10 @@
                         <span>{{ __('auth.enter-password') }}</span>
                     @enderror
                 </li>
-                <li class="no-border">
+                <li class="no-border checkbox">
                     <label for="remember">{{ __('auth.remember') }}</label>
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <span class="checkmark"></span>
                 </li>
                 @if (Route::has('password.request'))
                 <li class="no-border">
