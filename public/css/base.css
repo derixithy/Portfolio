@@ -601,6 +601,12 @@ ul.menu li.box.true:before {
 ul.menu li.box.false:before {
   content: "☒ " !important;
 }
+.form {
+  /* 
+	 * https://www.sanwebe.com/2014/08/css-html-forms-designs
+	 * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox
+	 */
+}
 .form ul {
   list-style-type: none;
   padding: 0;
@@ -610,23 +616,31 @@ ul.menu li.box.false:before {
   display: block;
   padding-top: 0.3em;
   border: 1px solid #cacaca;
-  margin-top: 1.2em;
+  margin-top: 0.3em;
+  margin-bottom: 1.2em;
   background: #F8F8F9;
   min-height: 1em;
 }
 .form ul li:last-child,
-.form ul li.last {
+.form ul li.no-border {
   border: none;
   margin-top: 0.3em;
   text-align: center;
 }
 .form ul li:last-child > label,
-.form ul li.last > label {
+.form ul li.no-border > label {
   margin-top: 0;
   margin-left: 0;
 }
 .form ul li input {
-  padding: 0.3em;
+  padding: 0.8em;
+  margin-bottom: 1em;
+}
+.form ul li input:focus {
+  margin-bottom: 0;
+}
+.form ul li input:focus + span {
+  display: inherit;
 }
 .form ul li > label {
   display: block;
@@ -647,14 +661,22 @@ ul.menu li.box.false:before {
   text-align: center;
   color: #F8F8F9;
   font-size: 0.8em;
+  display: none;
+  height: 1.5em;
 }
 .form ul li a {
   color: #535353;
   font-weight: bold;
 }
-.form ul li:after {
-  display: block;
-  clear: both;
+.form ul li.is-invalid {
+  border-color: #c43611;
+}
+.form ul li.is-invalid input {
+  margin-bottom: 0;
+}
+.form ul li.is-invalid .invalid {
+  background-color: #c43611;
+  display: inherit;
 }
 .form input[type="text"],
 .form input[type="date"],
@@ -674,7 +696,6 @@ ul.menu li.box.false:before {
   height: 1.5em;
   line-height: 1.5em;
   font-size: 1.2em;
-  padding: 0;
   background-color: #F8F8F9;
 }
 .form textarea {

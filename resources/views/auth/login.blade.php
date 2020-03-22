@@ -10,38 +10,40 @@
 
             <ul>
                 <li @error('email') class="is-invalid" @enderror>
-                    <label for="name">{{ __('E-Mail Address') }}</label>
-                    <input type="text" name="name" value="{{ old('email') }}" equired autocomplete="email" autofocus />
-                    <span>{{ __('Enter your E-Mail here') }}</span>
+                    <label for="email">{{ __('auth.login') }}</label>
+                    <input type="text" name="email" value="{{ old('email') }}" equired autocomplete="email" autofocus />
                     @error('email')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
+                    @else
+                        <span>{{ __('auth.enter-email') }}</span>
                     @enderror
                 </li>
                 <li @error('password') class="is-invalid" @enderror>
-                    <label for="password">{{ __('Password') }}</label>
+                    <label for="password">{{ __('auth.password') }}</label>
                     <input type="text" name="password" equired autocomplete="current-password" />
-                    <span>{{ __('Enter your Password here') }}</span>
                     @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
+                    @else
+                        <span>{{ __('auth.enter-password') }}</span>
                     @enderror
                 </li>
-                <li class="last">
-                    <label for="remember">{{ __('Remember Me') }}</label>
+                <li class="no-border">
+                    <label for="remember">{{ __('auth.remember') }}</label>
                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 </li>
                 @if (Route::has('password.request'))
-                <li class="last">
+                <li class="no-border">
                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('auth.forgot') }}
                         </a>
                 </li>
                 @endif
                 <li>
-                    <input type="submit" value="{{ __('Login') }}" />
+                    <input type="submit" value="{{ __('auth.login') }}" />
                 </li>
             </ul>
         </form>

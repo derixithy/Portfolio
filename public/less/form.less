@@ -1,4 +1,8 @@
 #form() {
+	/* 
+	 * https://www.sanwebe.com/2014/08/css-html-forms-designs
+	 * https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_checkbox
+	 */
 	ul {
 		list-style-type: none;
 		padding: 0;
@@ -8,12 +12,13 @@
 			display: block;
 			padding-top: #spacing[small];
 			border: 1px solid #color[grey];
-			margin-top: #spacing[large];
+			margin-top: #spacing[small];
+			margin-bottom: #spacing[large];
 			//border-radius: #radius[small];
 			background: #color[light];
 			min-height: #lineheight[small];
 
-			&:last-child, &.last {
+			&:last-child, &.no-border {
 				border: none;
 				margin-top: #spacing[small];
 				text-align: center;
@@ -24,11 +29,19 @@
 				}
 			}
 
-			& input {
-				padding: #spacing[small];
+			input {
+				padding: #spacing[medium];
+				margin-bottom: #lineheight[small];
+				&:focus {
+					margin-bottom: 0;
+				}
 			}
 
-			& > label {
+			input:focus + span {
+				display: inherit;
+			}
+
+			& > label { // field name
 				display: block;
 				float: left;
 				margin-top: -1.3em;
@@ -41,22 +54,32 @@
 				background: #color[light];
 			}
 
-			& > span {
+			& > span { // help text
 				background: #color[grey];
 				display: block;
 				padding: #spacing[small];
 				text-align: center;
 				color: #color[light];
 				font-size: #font[small];
+				display: none;
+				height: #lineheight[medium];
 			}
 			a {
 				color: #color[dark];
 				font-weight: bold;
 			}
 
-			&:after {
-				display: block;
-				clear: both;
+			&.is-invalid {
+				border-color: #color[alert];
+
+				input {
+					margin-bottom: 0;
+				}
+
+				.invalid {
+					background-color: #color[alert];
+					display: inherit;
+				}
 			}
 		}
 	}
@@ -79,7 +102,7 @@
 		height: #lineheight[medium];
 		line-height: #lineheight[medium];
 		font-size: #font[medium];
-		padding: 0;
+		//padding: 0;
 		background-color: #color[light];
 	}
 
