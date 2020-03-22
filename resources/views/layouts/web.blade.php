@@ -48,7 +48,7 @@
 	</nav>
 	<div class="container">
 		<div class="cover @yield('cover-size', '')">
-			<img src="@yield('cover', 'img/over.jpg')" alt="heading">
+			<img src="@yield('cover', 'img/werkkamer.jpg')" alt="heading">
 		</div>
 		<div class="heading">
 			<h1>@yield('page-title', 'Undefined')</h1>
