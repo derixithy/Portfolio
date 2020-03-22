@@ -42,7 +42,7 @@ Route::match(['get', 'post'], '/zoek.html', 'SearchController@show')
  *
  * Admin
  ****************************************************************/
-Route::prefix('admin',)->group(function(){
+Route::prefix('admin')->group(function(){
 	Route::resources([
 	    'page' => 'EditPageController',
 	    'project' => 'EditProjectController',
