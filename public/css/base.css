@@ -1,8 +1,3 @@
-#radius {
-  small: 0.2em;
-  medium: 0.35em;
-  large: 0.5em;
-}
 .padding-small-left {
   padding-left: 0.3em;
 }
@@ -100,41 +95,41 @@
   margin-top: 4em;
 }
 .light {
-  color: #e8eddf;
+  color: #F8F8F9;
 }
 .light-background {
-  color: #242423;
-  background-color: #e8eddf;
+  color: #535353;
+  background-color: #F8F8F9;
 }
 .dark {
-  color: #242423;
+  color: #535353;
 }
 .dark-background {
-  color: #e8eddf;
-  background-color: #242423;
+  color: #F8F8F9;
+  background-color: #535353;
 }
 .text-center {
   text-align: center;
 }
 .post .card {
-  border: 1px solid #cfdbd5;
-  border-radius: 0.2em;
+  border: 1px solid #cacaca;
+  border-radius: 0.23em;
   background-color: #ffffff;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.13);
   border-radius: 0.3em;
 }
 .post .card > *:first-child {
-  border-top-left-radius: 0.2em;
-  border-top-right-radius: 0.2em;
+  border-top-left-radius: 0.23em;
+  border-top-right-radius: 0.23em;
 }
 .post .card > *:last-child {
-  border-bottom-left-radius: 0.2em;
-  border-bottom-right-radius: 0.2em;
+  border-bottom-left-radius: 0.23em;
+  border-bottom-right-radius: 0.23em;
 }
 .post .card.hover:hover {
   overflow: hidden;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.4);
-  background-color: #242423;
+  background-color: #535353;
 }
 .post .card.hover:hover .poster {
   overflow: visible;
@@ -154,7 +149,7 @@
 }
 .post .card .poster {
   width: 100%;
-  background-color: #242423;
+  background-color: #535353;
   height: 8em;
   overflow: hidden;
 }
@@ -213,7 +208,7 @@ html {
 }
 body {
   background-color: #f8f8f8;
-  color: #242423;
+  color: #535353;
   border-top: 0.3em solid #1985a1;
   font-family: 'Nunito';
 }
@@ -221,7 +216,7 @@ body {
   font-family: 'Poiret One';
   font-size: 1.5rem;
   line-height: 1.2em;
-  color: #3e3e3c;
+  color: #3e3e3e;
 }
 .muted,
 .muted:hover,
@@ -229,7 +224,7 @@ body {
 .muted:visited,
 .muted:link,
 nav a {
-  color: #242423;
+  color: #535353;
   text-decoration: none;
   line-height: 105%;
 }
@@ -260,7 +255,7 @@ nav ul li {
   padding: 0.3em;
 }
 nav ul li a {
-  color: #242423;
+  color: #535353;
   display: inline-block;
   width: 100%;
   text-decoration: none;
@@ -310,7 +305,7 @@ nav .links .active {
 }
 ul.subnav {
   text-align: center;
-  background-color: #e8eddf;
+  background-color: #F8F8F9;
   list-style-type: none;
   margin: 0.3em auto 0.8em auto;
   padding: 0.8em;
@@ -320,7 +315,7 @@ ul.subnav li {
   padding: 0.3em;
 }
 ul.subnav li a {
-  color: #242423;
+  color: #535353;
   display: inline-block;
   width: 100%;
   text-decoration: none;
@@ -585,7 +580,7 @@ ul.menu {
 }
 ul.menu li:not(.title):not(.separator):before {
   content: "» ";
-  color: brighten(#cfdbd5, 10%);
+  color: brighten(#cacaca, 10%);
 }
 ul.menu li.title {
   font-weight: bold;
@@ -606,9 +601,110 @@ ul.menu li.box.true:before {
 ul.menu li.box.false:before {
   content: "☒ " !important;
 }
+.form ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.form ul li {
+  display: block;
+  padding-top: 0.3em;
+  border: 1px solid #cacaca;
+  margin-top: 1.2em;
+  background: #F8F8F9;
+  min-height: 1em;
+}
+.form ul li:last-child,
+.form ul li.last {
+  border: none;
+  margin-top: 0.3em;
+  text-align: center;
+}
+.form ul li:last-child > label,
+.form ul li.last > label {
+  margin-top: 0;
+  margin-left: 0;
+}
+.form ul li input {
+  padding: 0.3em;
+}
+.form ul li > label {
+  display: block;
+  float: left;
+  margin-top: -1.3em;
+  margin-left: 0.8em;
+  height: 1.5em;
+  font-size: 0.8em;
+  padding: 0.3em;
+  color: #535353;
+  overflow: hidden;
+  background: #F8F8F9;
+}
+.form ul li > span {
+  background: #cacaca;
+  display: block;
+  padding: 0.3em;
+  text-align: center;
+  color: #F8F8F9;
+  font-size: 0.8em;
+}
+.form ul li a {
+  color: #535353;
+  font-weight: bold;
+}
+.form ul li:after {
+  display: block;
+  clear: both;
+}
+.form input[type="text"],
+.form input[type="date"],
+.form input[type="datetime"],
+.form input[type="email"],
+.form input[type="number"],
+.form input[type="search"],
+.form input[type="time"],
+.form input[type="url"],
+.form input[type="password"],
+.form textarea,
+.form select {
+  width: 100%;
+  display: block;
+  outline: none;
+  border: none;
+  height: 1.5em;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  padding: 0;
+  background-color: #F8F8F9;
+}
+.form textarea {
+  resize: none;
+}
+.form button[type="submit"],
+.form input[type="submit"],
+.form input[type="button"] {
+  background: #535353;
+  padding: 0.3em 1.8em;
+  border: none;
+  color: #F8F8F9;
+  float: right;
+}
+.form button[type="submit"]:hover,
+.form input[type="submit"]:hover,
+.form input[type="button"]:hover {
+  background-color: #1985a1;
+}
+.form input[type="checkbox"] {
+  float: right;
+}
+.form input[type="checkbox"]:after {
+  display: block;
+  height: 0;
+  clear: both;
+}
 footer {
   padding: 4em;
-  color: #72726e;
+  color: #717171;
 }
 footer p {
   width: 100%;
@@ -638,7 +734,7 @@ footer p {
   nav ul.links li {
     display: block;
     padding: 0.3em;
-    border-bottom: 1px solid #cfdbd5;
+    border-bottom: 1px solid #cacaca;
   }
   nav ul.links li:last-child {
     border: none;

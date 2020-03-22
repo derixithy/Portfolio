@@ -1,0 +1,113 @@
+#form() {
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			display: block;
+			padding-top: #spacing[small];
+			border: 1px solid #color[grey];
+			margin-top: #spacing[large];
+			//border-radius: #radius[small];
+			background: #color[light];
+			min-height: #lineheight[small];
+
+			&:last-child, &.last {
+				border: none;
+				margin-top: #spacing[small];
+				text-align: center;
+
+				& > label {
+					margin-top: 0;
+					margin-left: 0;
+				}
+			}
+
+			& input {
+				padding: #spacing[small];
+			}
+
+			& > label {
+				display: block;
+				float: left;
+				margin-top: -1.3em;
+				margin-left: #spacing[medium];
+				height: #lineheight[medium];
+				font-size: #font[small];
+				padding: #spacing[small];
+				color: #color[dark];
+				overflow: hidden;
+				background: #color[light];
+			}
+
+			& > span {
+				background: #color[grey];
+				display: block;
+				padding: #spacing[small];
+				text-align: center;
+				color: #color[light];
+				font-size: #font[small];
+			}
+			a {
+				color: #color[dark];
+				font-weight: bold;
+			}
+
+			&:after {
+				display: block;
+				clear: both;
+			}
+		}
+	}
+
+	input[type="text"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="email"],
+	input[type="number"],
+	input[type="search"],
+	input[type="time"],
+	input[type="url"],
+	input[type="password"],
+	textarea, select
+	{
+		width: 100%;
+		display: block;
+		outline: none;
+		border: none;
+		height: #lineheight[medium];
+		line-height: #lineheight[medium];
+		font-size: #font[medium];
+		padding: 0;
+		background-color: #color[light];
+	}
+
+	textarea {
+		resize: none;
+	}
+	button[type="submit"],
+	input[type="submit"],
+	input[type="button"] {
+		background: #color[dark];
+		padding: #spacing[small] #spacing[xlarge];
+		//border-radius: #radius[small];
+		border: none;
+		color: #color[light];
+		float: right;
+
+		&:hover {
+			background-color: #color[accent];
+		}
+	}
+
+	input[type="checkbox"] {
+		float: right;
+
+		&:after {
+			display: block;
+			height: 0;
+			clear: both;
+		}
+	}
+}
