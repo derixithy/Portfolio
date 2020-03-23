@@ -45,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
 		Blade::include('shared.form.text',              'text');
 		Blade::include('shared.form.textarea',          'textarea');
 		Blade::include('shared.form.checkbox',          'checkbox');
+		Blade::include('shared.form.button',            'button');
 		Blade::include('shared.form.submit',            'submit');
 	}
 }
