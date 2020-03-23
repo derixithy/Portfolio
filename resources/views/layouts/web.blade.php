@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+	<base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" -->
@@ -20,6 +21,7 @@
     <!-- Icons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+	@yield('head')
 </head>
 <body>
 	<nav>
@@ -46,15 +48,20 @@
 			<a href="{{ route('search') }}"><i class="fas fa-search"></i></a>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="cover @yield('cover-size', '')">
-			<img src="@yield('cover', 'img/werkkamer.jpg')" alt="heading">
+	@section('heading')
+		<div class="container">
+			<div class="cover @yield('cover-size', '')">
+				<img src="@yield('cover', 'img/werkkamer.jpg')" alt="heading">
+			</div>
+			<div class="heading">
+				<h1>@yield('page-title', 'Undefined')</h1>
+			</div>
 		</div>
-		<div class="heading">
-			<h1>@yield('page-title', 'Undefined')</h1>
-		</div>
-@include('shared.errors')
-@section('main')
+	@show
+
+	@include('shared.errors')
+
+	@section('main')
 		<main>
 
 			@error('title')
@@ -63,11 +70,14 @@
 
 			@yield('content')
 		</main>
-@show
-	</div>
-	<footer>
-		<p>&copy; Copyright 2020 - Eddie Gjaltema @guest - <a href="{{ route('login') }}" class="muted">login</a> @endguest</p>
-	</footer>
+	@show
+
+	@section('footer')
+		<footer>
+			<p>&copy; Copyright 2020 - Eddie Gjaltema @auth - <a href="{{ route('logout') }}" class="muted">{{__('logout')}}</a> @else - <a href="{{ route('login') }}" class="muted">{{__('login')}}</a> @endauth</p>
+		</footer>
+	@show
+
 	@auth
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf

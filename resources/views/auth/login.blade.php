@@ -9,43 +9,10 @@
             @csrf
 
             <ul>
-                <li @error('email') class="is-invalid" @enderror>
-                    <label for="email">{{ __('auth.login') }}</label>
-                    <input type="text" name="email" value="{{ old('email') }}" equired autocomplete="email" autofocus />
-                    @error('email')
-                        <span class="invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @else
-                        <span>{{ __('auth.enter-email') }}</span>
-                    @enderror
-                </li>
-                <li @error('password') class="is-invalid" @enderror>
-                    <label for="password">{{ __('auth.password') }}</label>
-                    <input type="text" name="password" equired autocomplete="current-password" />
-                    @error('password')
-                        <span class="invalid" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @else
-                        <span>{{ __('auth.enter-password') }}</span>
-                    @enderror
-                </li>
-                <li class="no-border checkbox">
-                    <label for="remember">{{ __('auth.remember') }}</label>
-                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <span class="checkmark"></span>
-                </li>
-                @if (Route::has('password.request'))
-                <li class="no-border">
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('auth.forgot') }}
-                        </a>
-                </li>
-                @endif
-                <li>
-                    <input type="submit" value="{{ __('auth.login') }}" />
-                </li>
+                @authEmail
+                @authPassword
+                @authRemember
+                @authSubmit(['title' => 'login', 'request'=>true])
             </ul>
         </form>
     </div>
