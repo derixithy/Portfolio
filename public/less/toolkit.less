@@ -6,7 +6,7 @@
 	@quadrant: extract(@quadrants, @count);
 
 	.@{type}-@{variant}-@{quadrant} {
-		@{type}-@{quadrant}: @value;
+		@{type}-@{quadrant}: @value !important;
 	}
 
 	.loop-quadrants(@type, @variant, @value, @count - 1);
