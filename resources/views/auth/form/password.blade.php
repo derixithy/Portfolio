@@ -1,4 +1,4 @@
-<li @error('password') class="is-invalid" @enderror>
+<div class="field @error('email') is-invalid @enderror">
     <label for="password">{{ __('auth.password') }}</label>
     <input type="password" name="password" required autocomplete="current-password" />
     @error('password')
@@ -8,4 +8,4 @@
     @else
         <span>{{ __('form.enter', ['enter' => __('form.password')]) }}</span>
     @enderror
-</li>
+</div>

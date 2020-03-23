@@ -290,9 +290,6 @@ nav .left {
   verticle-align: middle;
   whitespace: nowrap;
 }
-nav a:hover {
-  text-decoration: underline;
-}
 nav .menu {
   flex-grow: 1;
   text-align: center;
@@ -303,9 +300,13 @@ nav .menu a {
 nav .links .active {
   font-weight: bold;
 }
+nav .icon,
+nav .title {
+  font-size: 1.8em;
+}
 ul.subnav {
   text-align: center;
-  background-color: #F8F8F9;
+  background-color: #1985a1;
   list-style-type: none;
   margin: 0.3em auto 0.8em auto;
   padding: 0.8em;
@@ -326,6 +327,10 @@ ul.subnav li a {
 ul.subnav li a:hover {
   text-decoration: none;
   border-bottom-color: #1985a1;
+}
+ul.subnav li,
+ul.subnav li a {
+  color: #F8F8F9;
 }
 ul.subnav li a:hover {
   border-bottom-color: #f8f8f8;
@@ -624,6 +629,15 @@ ul.menu li.box.false:before {
   background: #F8F8F9;
   min-height: 1em;
 }
+.form .field:hover {
+  border-color: #1985a1;
+}
+.form .field:hover label {
+  color: #1985a1;
+}
+.form .field:hover span {
+  background-color: #1985a1;
+}
 .form .field.no-border {
   border: none;
   margin-top: 0.3em;
@@ -633,14 +647,19 @@ ul.menu li.box.false:before {
   margin-top: 0;
   margin-left: 0;
 }
+.form .field.no-help input {
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+}
 .form .field input {
-  padding: 0.8em;
+  padding: 0.3em;
   margin-bottom: 1em;
 }
 .form .field input:focus {
   margin-bottom: 0;
 }
-.form .field input:focus + span {
+.form .field input:focus + span,
+.form .field:hover input:focus + span {
   display: inherit;
 }
 .form .field > label {
@@ -737,7 +756,6 @@ ul.menu li.box.false:before {
 .form input[type="time"],
 .form input[type="url"],
 .form input[type="password"],
-.form input[type="textarea"],
 .form textarea,
 .form select {
   width: 100%;
@@ -751,6 +769,8 @@ ul.menu li.box.false:before {
 }
 .form textarea {
   resize: none;
+  height: 2.1em;
+  padding: 0.3em;
 }
 .form button[type="submit"],
 .form input[type="submit"],
@@ -759,12 +779,30 @@ ul.menu li.box.false:before {
   padding: 0.3em 1.8em;
   border: none;
   color: #F8F8F9;
-  float: right;
 }
 .form button[type="submit"]:hover,
 .form input[type="submit"]:hover,
 .form input[type="button"]:hover {
   background-color: #1985a1;
+}
+.form button[type="submit"]:after,
+.form input[type="submit"]:after,
+.form input[type="button"]:after {
+  content: "";
+  clear: both;
+}
+.form button[type="submit"],
+.form input[type="submit"] {
+  float: right;
+}
+.form input[type="button"] {
+  display: block;
+  margin: 0 auto;
+}
+.stealth input {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #535353;
 }
 footer {
   padding: 4em;

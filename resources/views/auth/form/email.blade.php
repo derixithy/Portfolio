@@ -1,4 +1,4 @@
-<li @error('email') class="is-invalid" @enderror>
+<div class="field @error('email') is-invalid @enderror">
     <label for="email">{{ __('form.email') }}</label>
     <input type="text" name="email" value="{{ old('email') }}" equired autocomplete="email" autofocus />
     @error('email')
@@ -8,4 +8,4 @@
     @else
         <span>{{ __('form.enter', ['enter' => __('form.email')]) }}</span>
     @enderror
-</li>
+</div>

@@ -11,10 +11,8 @@
         <form class="form" method="POST" action="{{ route('password.confirm') }}">
             @csrf
 
-            <ul>
-                @authPassword
-                @authSubmit
-            </ul>
+            @authPassword
+            @authSubmit
         </form>
     </div>
 </div>

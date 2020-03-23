@@ -4,6 +4,7 @@
 		@foreach( $modules as $name => $title)
 		<li><a href="{{ route($name.'.index') }}">{{ $title }}</a></li>
 		@endforeach
+		<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Uitloggen</a></li>
 	</ul>
 	<div class="heading">
 		<h1>@yield('page-title', 'Administation')</h1>

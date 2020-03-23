@@ -19,17 +19,20 @@
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
 
     <!-- Icons -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/icons.css">
+	<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script-->
 	@yield('head')
 </head>
 <body>
 	<nav>
 		<div class="home hide-on-mobile">
-			<a href="{{ url('/') }}"><i class="fas fa-home"></i></a>
+			<a href="{{ url('/') }}">
+				<i class="icon icon-home"></i>
+			</a>
 		</div>
 		<div class="menu">
-			<label for="hamburger" class="burgermenu">&#9776; {{ config('app.name', 'Laravel') }}</label>
+			<label for="hamburger" class="burgermenu title">&#9776; {{ config('app.name', 'Laravel') }}</label>
 			<input type="checkbox" id="hamburger"/>
 			<ul class="links">
 				@foreach($menu as $page)
@@ -39,13 +42,19 @@
 		</div>
 		<div class="search hide-on-mobile">
             @auth
-                    <a href="{{ route('page.index') }}"><i class="fas fa-lock"></i></a>
+                    <a href="{{ route('page.index') }}">
+                    	<i class="icon icon-settings"></i>
+                    </a>
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i></a>
+                    <a href="{{ route('register') }}">
+                    	<i class="icon icon-users"></i>
+                    </a>
                 @endif
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i></a>
+            @else
+				<a href="{{ route('search') }}" class="muted">
+					<i class="icon icon-magnifying"></i>
+				</a>
             @endauth
-			<a href="{{ route('search') }}"><i class="fas fa-search"></i></a>
 		</div>
 	</nav>
 	@section('heading')
@@ -83,5 +92,29 @@
             @csrf
         </form>
     @endauth
+
+
+<script type="text/javascript">
+	@yield('javascript')
+	@hasSection('textarea')
+		//auto expand textarea
+		function resize(h) {
+		    h.style.height = "20px";
+		    h.style.height = (h.scrollHeight)+"px";
+		}
+
+		var textareas = document.getElementsByTagName("textarea");
+
+		function init() {
+			for (i = 0; i < textareas.length; i++) {
+				var textarea = textareas[i];
+				resize(textarea);
+			}
+		}
+
+		init();
+	@endif
+</script>
+
 </body>
 </html>

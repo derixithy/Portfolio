@@ -49,9 +49,6 @@ nav {
 	a {
 		&:extend(.muted);
 
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 
 	.menu {
@@ -63,14 +60,24 @@ nav {
 	.links .active {
 		font-weight: bold;
 	}
+
+	.icon, .title {
+		font-size: #font[large];
+	}
 }
 
 ul.subnav {
 	text-align: center;
-	background-color: #color[light];
+	background-color: #color[accent];
+	
 	#subnav();
-	li a:hover {
-		border-bottom-color: #color[background];
+	li {
+		&, a {
+			color: #color[light];
+		}
+		a:hover {
+			border-bottom-color: #color[background];
+		}
 	}
 }
 
@@ -119,6 +126,9 @@ ul.menu {
 
 .form {
 	#form();
+}
+.stealth {
+	#stealth();
 }
 
 

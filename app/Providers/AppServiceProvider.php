@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 			'page' => 'Pagina\'s',
 			'project' => 'Projecten',
 			'tag' => 'Tags',
-			'user' => 'Gebruikers'
+			'user' => 'Gebruikers',
 		]);
 
 		Blade::include('auth.form.password',            'authPassword');

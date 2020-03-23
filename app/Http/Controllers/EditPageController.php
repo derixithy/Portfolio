@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
-//use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ValidatePage;
 
 class EditPageController extends Controller
@@ -39,7 +39,12 @@ class EditPageController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Pagina\'s',
+            'page' => new Page(),
+        ];
+
+        return view('page.edit')->with($data);
     }
 
     /**
@@ -49,8 +54,8 @@ class EditPageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidatePage $request)
-    {
-        redirect('admin/page');
+    {die();
+        return Redirect::route('page.index');
     }
 
     /**
@@ -61,7 +66,7 @@ class EditPageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+        return redirect('page', $page);
     }
 
     /**
@@ -89,7 +94,14 @@ class EditPageController extends Controller
      */
     public function update(ValidatePage $request, Page $page)
     {
-        //
+
+        if( $page->name != $request->get('name') )
+            $page->name = $request->get('name');
+
+        $page->title = $request->get('title');
+        $page->content = $request->get('content');
+        $page->save();
+        return Redirect(route('page.edit', $page));
     }
 
     /**

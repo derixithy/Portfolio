@@ -6,7 +6,7 @@
 @section('content')
 	<article>
 		<div class="text">
-			{{$page->content}}
+			{!! nl2br($page->content) !!}
 		</div>
 	</article>
 @if($projects)

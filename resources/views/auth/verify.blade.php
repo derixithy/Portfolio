@@ -19,9 +19,7 @@
         <form class="form" method="POST" action="{{ route('verification.resend') }}">
             @csrf
 
-            <ul>
-                @authSubmit(['title' => 'request-another', 'request'=>true])
-            </ul>
+            @authSubmit(['title' => 'request-another', 'request'=>true])
         </form>
     </div>
 </div>

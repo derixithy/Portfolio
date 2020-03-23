@@ -8,13 +8,11 @@
         <form class="form" method="POST" action="{{ route('register') }}">
             @csrf
 
-            <ul>
                 @authName
                 @authEmail
                 @authPassword
                 @authConfirm
                 @authSubmit(['title' => 'register'])
-            </ul>
         </form>
     </div>
 </div>

@@ -23,6 +23,16 @@
 		background: #color[light];
 		min-height: #lineheight[small];
 
+		&:hover {
+			border-color: #color[accent];
+			label {
+				color: #color[accent];
+			}
+			span {
+				background-color: #color[accent];
+			}
+		}
+
 		&.no-border {
 			border: none;
 			margin-top: #spacing[small];
@@ -34,15 +44,23 @@
 			}
 		}
 
+		&.no-help {
+			input {
+				margin-bottom: 0;
+				padding-bottom: #spacing[small] + .2em;
+			}
+		}
+
 		input {
-			padding: #spacing[medium];
+			padding: #spacing[small];
 			margin-bottom: #lineheight[small];
 			&:focus {
 				margin-bottom: 0;
 			}
 		}
 
-		input:focus + span {
+		input:focus + span,
+		&:hover input:focus + span {
 			display: inherit;
 		}
 
@@ -152,7 +170,6 @@
 	input[type="time"],
 	input[type="url"],
 	input[type="password"],
-	input[type="textarea"],
 	textarea, select
 	{
 		width: 100%;
@@ -168,6 +185,8 @@
 
 	textarea {
 		resize: none;
+		height: #lineheight[medium] + #spacing[small] + #spacing[small];
+		padding: #spacing[small];
 	}
 	button[type="submit"],
 	input[type="submit"],
@@ -177,11 +196,30 @@
 		//border-radius: #radius[small];
 		border: none;
 		color: #color[light];
-		float: right;
 
 		&:hover {
 			background-color: #color[accent];
 		}
+		&:after {
+			content: "";
+			clear: both;
+		}
+	}
+	button[type="submit"],
+	input[type="submit"] {
+		float: right;
+	}
+	input[type="button"] {
+		display: block;
+		margin: 0 auto;
 	}
 
+}
+
+#stealth() {
+	input {
+		outline: none;
+		border: none;
+		border-bottom: 2px solid #color[dark];
+	}
 }
