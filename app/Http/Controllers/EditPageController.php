@@ -72,7 +72,12 @@ class EditPageController extends Controller
      */
     public function edit(Page $page)
     {
-        return $this->index($page);
+        $data = [
+            'title' => 'Pagina\'s',
+            'page' => $page,
+        ];
+
+        return view('page.edit')->with($data);
     }
 
     /**
