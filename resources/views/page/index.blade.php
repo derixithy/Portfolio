@@ -7,7 +7,7 @@
 		<div class="grid">
 			@foreach($pages as $page)
 				<div class="column-9-12 mobile-column-4-6">{{$page->title}}</div>
-				<div class="column-2-12 mobile-column-1-6">{{$page->status}}</div>
+				<div class="column-2-12 mobile-column-1-6">{{__('page.'.$page->status)}}</div>
 				<div class="column-1-12 mobile-column-1-6">
 					<a class="muted" href="{{route('page.edit', [$page->id])}}">Wijzig</a>
 				</div>
