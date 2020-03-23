@@ -577,6 +577,7 @@ article:first-child h2 {
 ul.menu {
   list-style-type: none;
   padding: 0.3em;
+  margin: 0;
 }
 ul.menu li:not(.title):not(.separator):before {
   content: "» ";
@@ -614,6 +615,8 @@ ul.menu li.box.false:before {
 }
 .form ul li {
   display: block;
+}
+.form .field {
   padding-top: 0.3em;
   border: 1px solid #cacaca;
   margin-top: 0.3em;
@@ -621,31 +624,29 @@ ul.menu li.box.false:before {
   background: #F8F8F9;
   min-height: 1em;
 }
-.form ul li:last-child,
-.form ul li.no-border {
+.form .field.no-border {
   border: none;
   margin-top: 0.3em;
   text-align: center;
 }
-.form ul li:last-child > label,
-.form ul li.no-border > label {
+.form .field.no-border > label {
   margin-top: 0;
   margin-left: 0;
 }
-.form ul li input {
+.form .field input {
   padding: 0.8em;
   margin-bottom: 1em;
 }
-.form ul li input:focus {
+.form .field input:focus {
   margin-bottom: 0;
 }
-.form ul li input:focus + span {
+.form .field input:focus + span {
   display: inherit;
 }
-.form ul li > label {
+.form .field > label {
   display: block;
   float: left;
-  margin-top: -1.3em;
+  margin-top: -1.2em;
   margin-left: 0.8em;
   height: 1.5em;
   font-size: 0.8em;
@@ -654,7 +655,7 @@ ul.menu li.box.false:before {
   overflow: hidden;
   background: #F8F8F9;
 }
-.form ul li > span {
+.form .field > span {
   background: #cacaca;
   display: block;
   padding: 0.3em;
@@ -664,31 +665,31 @@ ul.menu li.box.false:before {
   display: none;
   height: 1.5em;
 }
-.form ul li a {
+.form .field a {
   color: #535353;
   font-weight: bold;
 }
-.form ul li.is-invalid {
+.form .field.is-invalid {
   border-color: #c43611;
 }
-.form ul li.is-invalid input {
+.form .field.is-invalid input {
   margin-bottom: 0;
 }
-.form ul li.is-invalid .invalid {
+.form .field.is-invalid .invalid {
   background-color: #c43611;
   display: inherit;
 }
-.form ul li.checkbox {
+.form .field.checkbox {
   position: relative;
   user-select: none;
   cursor: pointer;
 }
-.form ul li.checkbox label {
+.form .field.checkbox label {
   width: 100%;
   display: block;
   text-align: left;
 }
-.form ul li.checkbox input {
+.form .field.checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -697,7 +698,7 @@ ul.menu li.box.false:before {
   right: 0;
   z-index: 1;
 }
-.form ul li.checkbox span {
+.form .field.checkbox span {
   position: absolute;
   top: 0;
   right: 0;
@@ -706,7 +707,7 @@ ul.menu li.box.false:before {
   background-color: #cacaca;
   display: block;
 }
-.form ul li.checkbox span:after {
+.form .field.checkbox span:after {
   content: "";
   position: absolute;
   display: none;
@@ -718,13 +719,13 @@ ul.menu li.box.false:before {
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
-.form ul li.checkbox:hover input ~ span {
+.form .field.checkbox:hover input ~ span {
   background-color: #535353;
 }
-.form ul li.checkbox input:checked ~ span {
+.form .field.checkbox input:checked ~ span {
   background-color: #1985a1;
 }
-.form ul li.checkbox input:checked ~ span:after {
+.form .field.checkbox input:checked ~ span:after {
   display: block;
 }
 .form input[type="text"],
@@ -736,6 +737,7 @@ ul.menu li.box.false:before {
 .form input[type="time"],
 .form input[type="url"],
 .form input[type="password"],
+.form input[type="textarea"],
 .form textarea,
 .form select {
   width: 100%;

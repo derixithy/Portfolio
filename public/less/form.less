@@ -10,130 +10,134 @@
 
 		li {
 			display: block;
-			padding-top: #spacing[small];
-			border: 1px solid #color[grey];
+			&:extend(.field);
+		}
+	}
+
+	.field {
+		padding-top: #spacing[small];
+		border: 1px solid #color[grey];
+		margin-top: #spacing[small];
+		margin-bottom: #spacing[large];
+		//border-radius: #radius[small];
+		background: #color[light];
+		min-height: #lineheight[small];
+
+		&.no-border {
+			border: none;
 			margin-top: #spacing[small];
-			margin-bottom: #spacing[large];
-			//border-radius: #radius[small];
+			text-align: center;
+
+			& > label {
+				margin-top: 0;
+				margin-left: 0;
+			}
+		}
+
+		input {
+			padding: #spacing[medium];
+			margin-bottom: #lineheight[small];
+			&:focus {
+				margin-bottom: 0;
+			}
+		}
+
+		input:focus + span {
+			display: inherit;
+		}
+
+		& > label { // field name
+			display: block;
+			float: left;
+			margin-top: -1.2em;
+			margin-left: #spacing[medium];
+			height: #lineheight[medium];
+			font-size: #font[small];
+			padding: #spacing[small];
+			color: #color[dark];
+			overflow: hidden;
 			background: #color[light];
-			min-height: #lineheight[small];
+		}
 
-			&:last-child, &.no-border {
-				border: none;
-				margin-top: #spacing[small];
-				text-align: center;
+		& > span { // help text
+			background: #color[grey];
+			display: block;
+			padding: #spacing[small];
+			text-align: center;
+			color: #color[light];
+			font-size: #font[small];
+			display: none;
+			height: #lineheight[medium];
+		}
+		a {
+			color: #color[dark];
+			font-weight: bold;
+		}
 
-				& > label {
-					margin-top: 0;
-					margin-left: 0;
-				}
+		&.is-invalid {
+			border-color: #color[alert];
+
+			input {
+				margin-bottom: 0;
+			}
+
+			.invalid {
+				background-color: #color[alert];
+				display: inherit;
+			}
+		}
+
+		&.checkbox {
+			position: relative;
+			user-select: none;
+			cursor: pointer;
+
+			label {
+				width: 100%;
+				display: block;
+				text-align: left;
 			}
 
 			input {
-				padding: #spacing[medium];
-				margin-bottom: #lineheight[small];
-				&:focus {
-					margin-bottom: 0;
-				}
-			}
-
-			input:focus + span {
-				display: inherit;
-			}
-
-			& > label { // field name
-				display: block;
-				float: left;
-				margin-top: -1.3em;
-				margin-left: #spacing[medium];
-				height: #lineheight[medium];
-				font-size: #font[small];
-				padding: #spacing[small];
-				color: #color[dark];
-				overflow: hidden;
-				background: #color[light];
-			}
-
-			& > span { // help text
-				background: #color[grey];
-				display: block;
-				padding: #spacing[small];
-				text-align: center;
-				color: #color[light];
-				font-size: #font[small];
-				display: none;
-				height: #lineheight[medium];
-			}
-			a {
-				color: #color[dark];
-				font-weight: bold;
-			}
-
-			&.is-invalid {
-				border-color: #color[alert];
-
-				input {
-					margin-bottom: 0;
-				}
-
-				.invalid {
-					background-color: #color[alert];
-					display: inherit;
-				}
-			}
-
-			&.checkbox {
-				position: relative;
-				user-select: none;
+				position: absolute;
+				opacity: 0;
 				cursor: pointer;
+				height: 0;
+				width: 0;
+				right:0;
+				z-index: 1;
+			}
+			span {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 25px;
+				width: 25px;
+				background-color: #color[grey];
+				display: block;
 
-				label {
-					width: 100%;
-					display: block;
-					text-align: left;
-				}
-
-				input {
+				&:after {
+					content: "";
 					position: absolute;
-					opacity: 0;
-					cursor: pointer;
-					height: 0;
-					width: 0;
-					right:0;
-					z-index: 1;
+					display: none;
+					left: 10px;
+					top: 6px;
+					width: 5px;
+					height: 10px;
+					border: solid white;
+					border-width: 0 3px 3px 0;
+					transform: rotate(45deg);
 				}
-				span {
-					position: absolute;
-					top: 0;
-					right: 0;
-					height: 25px;
-					width: 25px;
-					background-color: #color[grey];
+			}
+
+			&:hover input ~ span {
+				background-color: #color[dark];
+			}
+
+			& input:checked ~ span {
+				background-color: #color[accent];
+				&:after {
 					display: block;
-
-					&:after {
-						content: "";
-						position: absolute;
-						display: none;
-						left: 10px;
-						top: 6px;
-						width: 5px;
-						height: 10px;
-						border: solid white;
-						border-width: 0 3px 3px 0;
-						transform: rotate(45deg);
-					}
-				}
-
-				&:hover input ~ span {
-					background-color: #color[dark];
-				}
-
-				& input:checked ~ span {
-					background-color: #color[accent];
-					&:after {
-						display: block;
-					}
 				}
 			}
 		}
@@ -148,6 +152,7 @@
 	input[type="time"],
 	input[type="url"],
 	input[type="password"],
+	input[type="textarea"],
 	textarea, select
 	{
 		width: 100%;
