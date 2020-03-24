@@ -8,24 +8,25 @@ class Page extends Model
 {
     protected $fillable = ['name', 'title', 'content', 'status'];
 
-    public static function published()
+
+    public static function scopePublished( $query )
     {
-    	return self::whereStatus('PUBLISHED');
+    	return $query->whereStatus('PUBLISHED');
     }
 
-    public static function trash()
+    public static function scopeTrash( $query )
     {
-    	return self::whereStatus('DELETED');
+    	return $query->whereStatus('DELETED');
     }
 
-    public static function draft()
+    public static function scopeDraft( $query )
     {
-    	return self::whereStatus('DRAFT');
+    	return $query->whereStatus('DRAFT');
     }
 
-    public static function list()
+    public static function scopeList( $query )
     {
-        return self::where('status', '!=', 'DELETED');
+        return $query->where('status', '!=', 'DELETED');
     }
 }
 
