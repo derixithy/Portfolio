@@ -8,6 +8,14 @@
         <form class="form" method="POST" action="{{ route('register') }}">
             @csrf
 
+                
+                @text([
+                    'title' => __('Username'),
+                    'name' => 'username',
+                    'focus' => true,
+                    'required' => true,
+                    'description' => __('form.enter', ['enter' => 'gebruikersnaam'])
+                ])
                 @authName
                 @authEmail
                 @authPassword

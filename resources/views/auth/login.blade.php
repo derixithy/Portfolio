@@ -8,7 +8,7 @@
         <form class="form" method="POST" action="{{ route('login') }}">
             @csrf
 
-                @authEmail
+                @authLogin
                 @authPassword
                 @authRemember
                 @authSubmit(['title' => 'login', 'request'=>true])

@@ -35,8 +35,11 @@ class AppServiceProvider extends ServiceProvider
 			'user' => 'Gebruikers',
 		]);
 
+
+		// ToDo: Unify this into one (or some) package
 		Blade::include('auth.form.password',            'authPassword');
 		Blade::include('auth.form.name',                'authName');
+		Blade::include('auth.form.login',               'authLogin');
 		Blade::include('auth.form.email',               'authEmail');
 		Blade::include('auth.form.confirm-password',    'authConfirm');
 		Blade::include('auth.form.remember',            'authRemember');
@@ -46,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
 		Blade::include('shared.form.textarea',          'textarea');
 		Blade::include('shared.form.checkbox',          'checkbox');
 		Blade::include('shared.form.button',            'button');
+		Blade::include('shared.form.hidden',            'hidden');
 		Blade::include('shared.form.submit',            'submit');
 	}
 }

@@ -1,7 +1,9 @@
 <?php
 
 return [
+	'login' => "Gebruikersnaam of E-Mailadress",
 	'name' => "Naam",
+	'username' => "Gebruikersnaam",
 	'email' => "E-Mailadres",
 	'password' => "Wachtwoord",
 	'confirm-password' => "Wachtwoord bevestigen",

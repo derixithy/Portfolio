@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.hybrid')
 
 @section('page-title', $page->title)
 @section('cover', $page->cover)
@@ -10,7 +10,7 @@
 		</div>
 	</article>
 @if($projects)
-	<div class="margin-huge-bottom"></div>
+	<div class="margin-bottom-huge"></div>
 	<div class="grid">
 		@foreach($projects as $project)
 		<div class="@if( $loop->first ) column-6-12 @else column-3-12 @endif mobile-column-3-6">

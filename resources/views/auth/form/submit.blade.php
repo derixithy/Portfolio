@@ -1,4 +1,4 @@
-<div class="field">
+<div class="field no-border">
 @if ( Route::has('password.request') and isset($request) )
         <a class="btn btn-link" href="{{ route('password.request') }}">
             {{ __('auth.forgot') }}

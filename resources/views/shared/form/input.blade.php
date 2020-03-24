@@ -1,0 +1,1 @@
+<input type="{{ $type ?? 'text' }}" id="{{ $name ?? 'text' }}" name="{{ $name ?? 'text' }}" value="{{ $value ?? old($name ?? 'text') }}" @if(isset($required) and $required)required @endif @if(isset($focus) and $focus)autofocus @endif {!! $append ?? '' !!}>
