@@ -35,13 +35,11 @@
 	}
 
 	.offset(@size: 11, @max: 12) {
-		&-@{size} {
 			margin-left: 100% / @max * @size;
-		}
 	}
 
 	.offsets(@size: 11, @max: 12) when (@size > 0) {
-		&-@{size} {
+		&-@{size}-@{max} {
 			.offset(@size, @max)
 		}
 

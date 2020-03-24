@@ -24,6 +24,16 @@ body {
 	font-family: 'Nunito';
 }
 
+a {
+	color: #color[accent];
+	&:active, &:visited {
+		color: darken(#color[accent], 20%);
+	}
+	&:hover {
+		color: #color[success];
+	}
+}
+
 .text {
 	font-family: 'Poiret One';
 	font-size: 1.5rem;
@@ -127,10 +137,6 @@ ul.menu {
 .form {
 	#form();
 }
-.stealth {
-	#stealth();
-}
-
 
 footer {
 	&:extend(.container);
