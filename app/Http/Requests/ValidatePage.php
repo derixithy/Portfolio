@@ -24,12 +24,17 @@ class ValidatePage extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' =>'bail|required|alpha|unique:pages,name,'.$this->route('page')->id.'|max:25',
+        $rules = [
+            'name' =>'bail|required|alpha|max:25|unique:pages',
             'title' =>'required|max:100',
             'content' =>'required|max:500',
             'cover' =>'image',
             'status' => 'alpha'
         ];
+
+        if ( isset($this->route('page')->id) )
+            $rules['name'] .= ',name,'.$this->route('page')->id;
+
+        return $rules;
     }
 }
