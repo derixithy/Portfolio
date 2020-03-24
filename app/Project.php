@@ -15,14 +15,19 @@ class Project extends Model
             ->orWhere('status', '=', 'DONE');
     }
 
-    public static function queryTrash( $query )
+    public static function scopeTrash( $query )
     {
     	return $query->whereStatus('DELETED');
     }
 
-    public static function queryDraft( $query )
+    public static function scopeDraft( $query )
     {
-    	return $query->whereStatus('draft');
+    	return $query->whereStatus('DRAFT');
+    }
+
+    public static function scopeList( $query )
+    {
+        return $query->where('status', '!=', 'DELETED');
     }
 
 }
