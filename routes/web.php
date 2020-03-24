@@ -47,7 +47,8 @@ Route::prefix('admin')->group(function(){
 	    'page' => 'EditPageController',
 	    'project' => 'EditProjectController',
 	    'user' => 'EditUserController',
-	    'tag' => 'EditTagController'
+	    'tag' => 'TagController',
+	    'trash' => 'TrashController'
 	]);
 });//->middleware('auth');
 

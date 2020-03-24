@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
 			'project' => 'Projecten',
 			'tag' => 'Tags',
 			'user' => 'Gebruikers',
+			'trash' => 'Prullenbak',
 		]);
 
 
