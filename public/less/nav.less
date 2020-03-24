@@ -130,9 +130,14 @@
 		}
 
 		&.title {
-			font-weight: bold;
+			font-weight: bolder;
+			font-size: #font[medium];
 			//border-bottom: 1px solid #color[grey];
-			margin-bottom: #spacing[small];
+			margin: #spacing[medium] 0 #spacing[small] 0;
+
+			&:first-child {
+				margin-top: 0;
+			}
 		}
 
 		&.separator {
@@ -153,6 +158,12 @@
 		
 		&.box.false:before {
 			content: "☒ " !important;
+		}
+
+		a{
+			cursor: pointer;
+			color: #color[dark];
+			text-decoration: none;
 		}
 
 	}
