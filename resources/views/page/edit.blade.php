@@ -80,8 +80,9 @@
 				</li>
 				@break
 		@endswitch
-		<li class="title">Status</li>
-		<li><a href=""></li>
+		<li class="title">Wijzig</li>
+		<li><a href="#">Cover</li>
+		<li><a href="#">Tags</li>
 @endsection
 
 @section('footer')
