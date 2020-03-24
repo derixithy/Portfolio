@@ -55,31 +55,33 @@
 		@switch( $page->status)
 			@case('DRAFT')
 				<li>
-					<a href="{{route('page.edit', $page)}}" onclick="event.preventDefault(); document.getElementById('public').submit();">Publiceer</a>
+					<a onclick="event.preventDefault(); document.getElementById('public').submit();">Publiceer</a>
 				</li>
 				<li>
-					<a href="{{route('page.edit', $page)}}" onclick="event.preventDefault(); document.getElementById('destroy').submit();">Verwijderen</a>
+					<a onclick="event.preventDefault(); document.getElementById('destroy').submit();">Verwijderen</a>
 				</li>
 				@break
 
 			@case('DELETED')
 				<li>
-					<a href="{{route('page.edit', $page)}}" onclick="event.preventDefault(); document.getElementById('public').submit();">Publiceer</a>
+					<a onclick="event.preventDefault(); document.getElementById('public').submit();">Publiceer</a>
 				</li>
 				<li>
-					<a href="{{route('page.edit', $page)}}" onclick="event.preventDefault(); document.getElementById('draft').submit();">Concept</a>
+					<a onclick="event.preventDefault(); document.getElementById('draft').submit();">Concept</a>
 				</li>
 				@break
 
 			@default
 				<li>
-					<a href="{{route('page.edit', $page)}}" onclick="event.preventDefault(); document.getElementById('draft').submit();">Concept</a>
+					<a onclick="event.preventDefault(); document.getElementById('draft').submit();">Concept</a>
 				</li>
 				<li>
-					<a href="{{route('page.edit', $page)}}" onclick="event.preventDefault(); document.getElementById('destroy').submit();">Verwijderen</a>
+					<a onclick="event.preventDefault(); document.getElementById('destroy').submit();">Verwijderen</a>
 				</li>
 				@break
 		@endswitch
+		<li class="title">Status</li>
+		<li><a href=""></li>
 @endsection
 
 @section('footer')
