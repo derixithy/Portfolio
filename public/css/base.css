@@ -632,8 +632,12 @@ ul.menu li:not(.title):not(.separator):before {
   color: brighten(#cacaca, 10%);
 }
 ul.menu li.title {
-  font-weight: bold;
-  margin-bottom: 0.3em;
+  font-weight: bolder;
+  font-size: 1.2em;
+  margin: 0.8em 0 0.3em 0;
+}
+ul.menu li.title:first-child {
+  margin-top: 0;
 }
 ul.menu li.separator {
   height: 1.2em;
@@ -649,6 +653,11 @@ ul.menu li.box.true:before {
 }
 ul.menu li.box.false:before {
   content: "☒ " !important;
+}
+ul.menu li a {
+  cursor: pointer;
+  color: #535353;
+  text-decoration: none;
 }
 .form {
   /* 
