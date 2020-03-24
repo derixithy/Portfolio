@@ -8,27 +8,19 @@ class Project extends Model
 {
     protected $fillable = ['name', 'parent', 'title', 'content', 'status'];
 
-    public static function scopePublished( $query ) // ACTIVE, INACTIVE, DONE
+    public static function published()
     {
-    	/*return $query->where([
-            'status' => 'ACTIVE',
-            'status' => 'INACTIVE',
-            'status' => 'DONE'
-        ]);*/
-
-        return $query->whereStatus('ACTIVE')
-            ->orWhere('status', '=', 'INACTIVE')
-            ->orWhere('status', '=', 'DONE');
+    	return self::whereStatus('PUBLISHED');
     }
 
-    public static function queryTrash( $query )
+    public static function trash()
     {
-    	return $query->whereStatus('DELETED');
+    	return self::whereStatus('DELETED');
     }
 
-    public static function queryDraft( $query )
+    public static function draft()
     {
-    	return $query->whereStatus('draft');
+    	return self::whereStatus('draft');
     }
 
 }
