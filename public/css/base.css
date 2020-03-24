@@ -384,7 +384,8 @@ ul.subnav li,
 ul.subnav li a {
   color: #F8F8F9;
 }
-ul.subnav li a:hover {
+ul.subnav li a:hover,
+ul.subnav li a.active {
   border-bottom-color: #f8f8f8;
 }
 .cover {

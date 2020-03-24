@@ -30,4 +30,9 @@ class Project extends Model
         return $query->where('status', '!=', 'DELETED');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo('\App\Page', 'name', 'name');
+    }
+
 }

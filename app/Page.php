@@ -28,5 +28,10 @@ class Page extends Model
     {
         return $query->where('status', '!=', 'DELETED');
     }
+
+    public function projects()
+    {
+        return $this->hasMany('\App\Project', 'parent', 'name');
+    }
 }
 

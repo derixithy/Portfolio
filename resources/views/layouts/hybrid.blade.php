@@ -38,7 +38,8 @@
 			<input type="checkbox" id="hamburger"/>
 			<ul class="links">
 				@foreach($menu as $link)
-				<li><a href="{{ route('page', $link->name) }}" @if($link->name == ($page->parent ?: $page->name)) class="active"@endif>{{$link->title}}</a>
+				<li>
+					<a href="{{ route('page', $link->name) }}" @if(Route::currentRouteName() == 'page' and $page->name == $link->name) ) class="active"@endif>{{$link->title}}</a>
 				@endforeach
 			</ul>
 		</div>
@@ -48,12 +49,10 @@
 			</a>
 		</div>
 	</nav>
-
-
 	@auth
 		<ul class="subnav margin-bottom-none">
 			@foreach( $modules as $name => $title)
-			<li><a href="{{ route($name.'.index') }}">{!! $title !!}</a></li>
+			<li><a href="{{ route($name.'.index') }}" @if(Route::currentRouteName() == $name.'.index') class="active" @endif>{!! $title !!}</a></li>
 			@endforeach
 		</ul>
 	@endauth

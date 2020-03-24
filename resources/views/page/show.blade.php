@@ -12,7 +12,7 @@
 @if($projects)
 	<div class="margin-bottom-huge"></div>
 	<div class="grid">
-		@foreach($projects as $project)
+		@foreach($page->projects as $project)
 		<div class="@if( $loop->first ) column-6-12 @else column-3-12 @endif mobile-column-3-6">
 			<a href="{{ route('project', [$slug, $project->name]) }}" class="muted">
 				<div class="post">
