@@ -37,8 +37,8 @@
 			<label for="hamburger" class="burgermenu title">&#9776; {{ config('app.name', 'Laravel') }}</label>
 			<input type="checkbox" id="hamburger"/>
 			<ul class="links">
-				@foreach($menu as $page)
-				<li><a href="{{ route('page', $page->name) }}" @if(isset($slug) and $slug == $page->name)class="active"@endif>{{$page->title}}</a>
+				@foreach($menu as $link)
+				<li><a href="{{ route('page', $link->name) }}" @if($link->name == $page->name)class="active"@endif>{{$link->title}}</a>
 				@endforeach
 			</ul>
 		</div>
