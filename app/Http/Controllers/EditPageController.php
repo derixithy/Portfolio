@@ -22,11 +22,8 @@ class EditPageController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Pagina\'s',
             'pages' => Page::list()->get(),
-            'deleted' => Page::trash()->get()
         ];
-
 
 
         return view('page.index')->with($data);
@@ -44,7 +41,7 @@ class EditPageController extends Controller
             'page' => new Page(),
         ];
 
-        return view('page.edit')->with($data);
+        return view('page.create')->with($data);
     }
 
     /**
@@ -54,8 +51,14 @@ class EditPageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ValidatePage $request)
-    {die();
-        return Redirect::route('page.index');
+    {
+        $page = new Page();
+        $page->name = $request->get('name');
+        $page->title = $request->get('title');
+        $page->content = $request->get('content');
+        $page->save();
+
+        return Redirect(route('page.edit', $page));
     }
 
     /**
@@ -66,16 +69,8 @@ class EditPageController extends Controller
      */
     public function show(Page $page)
     {
-        $projects = \App\Project::whereParent($page->name)->get();
 
-        if ( $page )
-            return \View::make('page.show')
-                ->with('page', $page)
-                ->with('projects', $projects)
-                ->with('slug', $page->name)
-                ->with('layout', 'admin');
-
-        throw new NotFoundHttpException;
+        return (new PageController())->show($page->name, $page);
     }
 
     /**
@@ -103,11 +98,13 @@ class EditPageController extends Controller
      */
     public function update(ValidatePage $request, Page $page)
     {
-
-        $page->name = $request->get('name');
-        $page->title = $request->get('title');
-        $page->content = $request->get('content');
-        $page->status = $request->get('status');
+        if ($request->has('status') )
+            $page->status = $request->get('status');
+        else {
+            $page->name = $request->get('name');
+            $page->title = $request->get('title');
+            $page->content = $request->get('content');
+        }
         $page->save();
         return Redirect(route('page.edit', $page));
     }

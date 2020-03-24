@@ -1,9 +1,18 @@
 @extends('layouts.admin')
 
-@section('page-title', $title)
+@section('page-title', 'Pagina\'s')
 
 @if($pages)
 	@section('content')
+	<div class="grid form">
+		<div class="column-12-12 float-right">
+			@button([
+				'title' => 'Nieuw',
+				'type' => 'accent',
+				'href' => route('page.create')
+			])
+		</div>
+	</div>
 		<div class="grid">
 			@foreach($pages as $page)
 				<div class="column-8-12 mobile-column-4-6">{{$page->title}}</div>
@@ -17,13 +26,4 @@
 			@endforeach
 		</div>
 	@endsection
-	@if(count($deleted) < 0)
-		@section('aside')
-			<ul class="menu">
-				<li class="title">Verwijderd</li>
-				@foreach($deleted as $page)
-					<li>$page->title</li>
-				@endforeach
-		@endsection
-	@endif
 @endif

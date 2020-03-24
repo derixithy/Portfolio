@@ -95,19 +95,6 @@
 		'name' => 'status',
 		'value' => 'PUBLISHED'
 	])
-
-	@hidden([
-		'name' => 'name',
-		'value' => $page->name,
-	])
-	@hidden([
-		'name' => 'title',
-		'value' => $page->title,
-	])
-	@hidden([
-		'name' => 'content',
-		'value' => $page->content,
-	])
 </form>
 <form id="draft" method="POST" action="{{ route('page.update', $page->id) }}">
 	@csrf
@@ -117,19 +104,6 @@
 		'name' => 'status',
 		'value' => 'DRAFT'
 	])
-
-	@hidden([
-		'name' => 'name',
-		'value' => $page->name,
-	])
-	@hidden([
-		'name' => 'title',
-		'value' => $page->title,
-	])
-	@hidden([
-		'name' => 'content',
-		'value' => $page->content,
-	])
 </form>
 <form id="destroy" method="POST" action="{{ route('page.update', $page->id) }}">
 	@csrf
@@ -138,19 +112,6 @@
 	@hidden([
 		'name' => 'status',
 		'value' => 'DELETED'
-	])
-
-	@hidden([
-		'name' => 'name',
-		'value' => $page->name,
-	])
-	@hidden([
-		'name' => 'title',
-		'value' => $page->title,
-	])
-	@hidden([
-		'name' => 'content',
-		'value' => $page->content,
 	])
 </form>
 @endsection

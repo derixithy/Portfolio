@@ -25,9 +25,9 @@ class ValidatePage extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' =>'bail|required|alpha|max:25|unique:pages',
-            'title' =>'required|max:100',
-            'content' =>'required|max:500',
+            'name' =>'bail|filled|alpha|max:25|unique:pages',
+            'title' =>'filled|max:100',
+            'content' =>'filled|max:500',
             'cover' =>'image',
             'status' => 'alpha'
         ];

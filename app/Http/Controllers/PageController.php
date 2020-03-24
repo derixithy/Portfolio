@@ -10,9 +10,9 @@ class PageController extends Controller
     //
 
     // Show a page by slug
-    public function show($slug = 'over')
+    public function show($slug = 'over', \App\Page $page = null)
     {
-        $page = \App\Page::published()->whereName($slug)->first();
+        $page = $page ?: \App\Page::published()->whereName($slug)->first();
         $projects = \App\Project::whereParent($slug)->get();
 
         if ( $page )

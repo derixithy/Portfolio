@@ -1,5 +1,6 @@
 @quadrants: top, right, bottom, left;
-//@sizes: small, medium, large;
+@horizontals: left center right;
+@sizes: none, small, medium, large, huge;
 
 
 .loop-quadrants(@type, @variant, @value, @count: length(@quadrants) ) when (@count > 0) {
@@ -10,6 +11,16 @@
 	}
 
 	.loop-quadrants(@type, @variant, @value, @count - 1);
+}
+
+.loop-horizontal(@name, @type, @count: length(@horizontals)) when (@count > 0){
+	@value: extract(@horizontals, @count);
+
+	.@{name}-@{value} {
+		@{type}: @value;
+	}
+
+	.loop-horizontal(@name, @type, @count - 1);
 }
 
 
@@ -23,9 +34,10 @@
 .loop-quadrants(margin, small, #spacing[small]);
 .loop-quadrants(margin, medium, #spacing[medium]);
 .loop-quadrants(margin, large, #spacing[large]);
-
 .loop-quadrants(margin, huge, #spacing[huge]);
 
+.loop-horizontal(text, text-align);
+.loop-horizontal(float, float);
 
 
 .light { color: #color[light]; }
@@ -38,14 +50,4 @@
 .dark-background {
 	color: #color[light];
 	background-color: #color[dark];
-}
-
-.text-center {
-	text-align: center !important;
-}
-.text-right {
-	text-align: right !important;
-}
-.text-left {
-	text-align: left !important;
 }
