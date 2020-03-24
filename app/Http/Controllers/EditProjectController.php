@@ -20,7 +20,14 @@ class EditProjectController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'title' => 'Projecten',
+            'pages' => Project::list()->get(),
+        ];
+
+
+
+        return view('project.index')->with($data);
     }
 
     /**
@@ -52,7 +59,7 @@ class EditProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return (new \ProjectController())->show($project);
     }
 
     /**

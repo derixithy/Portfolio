@@ -5,20 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class PageController extends Controller
+class ProjectController extends Controller
 {
     //
 
-    // Show a page by slug
-    public function show($slug = 'over')
+    // Show a page by name
+    public function show($name, \App\Project $page = null)
     {
-        $page = \App\Project::published()->whereName($slug)->first();
-        $projects = \App\Project::whereParent($slug)->get();
+        $page = $page ?: \App\Project::published()->whereName($name)->first();
 
         if ( $page )
         	return \View::make('project.show')
-        		->with('page', $page)
-        		->with('projects', $projects)
+        		->with('page', $page);
 
         throw new NotFoundHttpException;
     }
