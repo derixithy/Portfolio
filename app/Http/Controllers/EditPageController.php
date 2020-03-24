@@ -66,7 +66,16 @@ class EditPageController extends Controller
      */
     public function show(Page $page)
     {
-        return redirect('page', $page);
+        $projects = \App\Project::whereParent($page->name)->get();
+
+        if ( $page )
+            return \View::make('page.show')
+                ->with('page', $page)
+                ->with('projects', $projects)
+                ->with('slug', $page->name)
+                ->with('layout', 'admin');
+
+        throw new NotFoundHttpException;
     }
 
     /**
@@ -95,11 +104,10 @@ class EditPageController extends Controller
     public function update(ValidatePage $request, Page $page)
     {
 
-        if( $page->name != $request->get('name') )
-            $page->name = $request->get('name');
-
+        $page->name = $request->get('name');
         $page->title = $request->get('title');
         $page->content = $request->get('content');
+        $page->status = $request->get('status');
         $page->save();
         return Redirect(route('page.edit', $page));
     }

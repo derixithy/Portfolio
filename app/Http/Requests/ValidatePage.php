@@ -27,8 +27,9 @@ class ValidatePage extends FormRequest
         return [
             'name' =>'bail|required|alpha|unique:pages,name,'.$this->route('page')->id.'|max:25',
             'title' =>'required|max:100',
-            'content' =>'required|max:100',
+            'content' =>'required|max:500',
             'cover' =>'image',
+            'status' => 'alpha'
         ];
     }
 }
