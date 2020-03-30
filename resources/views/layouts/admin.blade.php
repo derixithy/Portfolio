@@ -1,4 +1,4 @@
-@extends('layouts.hybrid')
+@extends('layouts.prototype')
 
 
 @section('heading')
@@ -10,11 +10,11 @@
 
 @section('main')
 	@hasSection('aside')
-		<div class="grid">
-			<main class="column-8-12">
+		<div grid>
+			<main column="six" offset="two">
 				@yield('content')
 			</main>
-			<aside class="column-4-12">
+			<aside columns="four">
 				@yield('aside')
 			</aside>
 		</div>

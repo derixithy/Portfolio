@@ -3,50 +3,36 @@
 @section('page-title', 'Wijzigen')
 
 @section('content')
-<form class="form" method="POST" action="{{ route('page.update', $page->id) }}">
+<form method="POST" action="{{ route('page.update', $page->id) }}">
 	@method('patch')
 	@csrf
-	<div class="grid">
-		<div class="column-9-12">
-			@text([
-				'title' => __('Title'),
-				'name' => 'title',
-				'focus' => true,
-				'required' => true,
-				'value' => $page->title,
-			])
-		</div>
-		<div class="column-3-12">
-			@text([
-				'title' => __('Slug'),
-				'name' => 'name',
-				'required' => true,
-				'value' => $page->name,
-			])
-		</div>
-	</div>
-	<div class="grid">
-		<div class="column-12-12">
-			@textarea([
-				'title' => __('Inhoud'),
-				'name' => 'content',
-				'required' => true,
-				'value' => $page->content,
-			])
-		</div>
-		<div class="offset-8-12 column-2-12">
-			@button([
-				'title' => 'Verwijder',
-				//'type' => 'warning',
-				'href' => route('page.destroy', $page)
-			])
-		</div>
-		<div class="column-2-12">
-			@submit([
-				'title' => 'Opslaan'
-			])
-		</div>
-	</div>
+	@text([
+		'title' => __('Title'),
+		'name' => 'title',
+		'focus' => true,
+		'required' => true,
+		'value' => $page->title,
+	])
+	@text([
+		'title' => __('Slug'),
+		'name' => 'name',
+		'required' => true,
+		'value' => $page->name,
+	])
+	@textarea([
+		'title' => __('Inhoud'),
+		'name' => 'content',
+		'required' => true,
+		'value' => $page->content,
+	])
+	@button([
+		'title' => 'Verwijder',
+		//'type' => 'warning',
+		'href' => route('page.destroy', $page)
+	])
+	@submit([
+		'title' => 'Opslaan'
+	])
 </form>
 @endsection
 @section('aside')
@@ -81,13 +67,14 @@
 				@break
 		@endswitch
 		<li class="title">Wijzig</li>
-		<li><a href="#">Cover</li>
-		<li><a href="#">Tags</li>
+		<li><a href="#">Cover</a></li>
+		<li><a href="#">Tags</a></li>
+	</ul>
 @endsection
 
 @section('footer')
 	@parent('footer')
-<form id="public" method="POST" action="{{ route('page.update', $page->id) }}">
+<form id="public" method="POST" style="display: none;" action="{{ route('page.update', $page->id) }}">
 	@csrf
 	@method('patch')
 
@@ -96,7 +83,7 @@
 		'value' => 'PUBLISHED'
 	])
 </form>
-<form id="draft" method="POST" action="{{ route('page.update', $page->id) }}">
+<form id="draft" method="POST" style="display: none;" action="{{ route('page.update', $page->id) }}">
 	@csrf
 	@method('patch')
 
@@ -105,7 +92,7 @@
 		'value' => 'DRAFT'
 	])
 </form>
-<form id="destroy" method="POST" action="{{ route('page.update', $page->id) }}">
+<form id="destroy" method="POST" style="display: none;" action="{{ route('page.update', $page->id) }}">
 	@csrf
 	@method('patch')
 
