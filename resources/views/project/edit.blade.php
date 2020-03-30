@@ -3,7 +3,7 @@
 @section('page-title', 'Wijzigen')
 
 @section('content')
-<form method="POST" action="{{ route('page.update', $page->id) }}">
+<form method="POST" action="{{ route('project.update', $page->id) }}">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -47,9 +47,19 @@
 @section('aside')
 	<ul class="menu">
 		<li class="title">Status</li>
-		@if( $page->status != 'PUBLISHED' )
+		@if( $page->status != 'ACTIVE' )
 			<li>
-				<a href="#" onclick="event.preventDefault(); updateStatus('PUBLISHED');">Publiek</a>
+				<a href="#" onclick="event.preventDefault(); updateStatus('ACTIVE');">Bezig</a>
+			</li>
+		@endif
+		@if( $page->status != 'INACTIVE' )
+			<li>
+				<a href="#" onclick="event.preventDefault(); updateStatus('INACTIVE');">Gestopt</a>
+			</li>
+		@endif
+		@if( $page->status != 'DONE' )
+			<li>
+				<a href="#" onclick="event.preventDefault(); updateStatus('DONE');">Klaar</a>
 			</li>
 		@endif
 		@if( $page->status != 'DRAFT' )
@@ -70,7 +80,7 @@
 
 @section('footer')
 	@parent('footer')
-<form id="update" method="POST" style="display: none;" action="{{ route('page.update', $page->id) }}">
+<form id="update" method="POST" style="display: none;" action="{{ route('project.update', $page->id) }}">
 	@csrf
 	@method('patch')
 

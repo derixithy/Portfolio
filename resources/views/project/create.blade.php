@@ -1,12 +1,10 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Nieuw pagina')
+@section('page-title', 'Nieuw project')
 
 @section('content')
-<div class="grid">
-	<div class="offset-1-6 column-4-6">
-		<form class="form" method="POST" action="{{ route('page.store') }}">
-			@csrf
+	<form class="form" method="POST" action="{{ route('project.store') }}">
+		@csrf
 		<div grid>
 			<div column="eight">
 				@text([
@@ -34,7 +32,5 @@
 			'class' => 'float-right',
 		])
 		<div class="clearfix"></div>
-		</form>
-	</div>
-</div>
+	</form>
 @endsection

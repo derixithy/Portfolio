@@ -1,3 +1,2 @@
-<div class="field no-border">
-    <input class="success" type="submit" value="{{ $title ?? __('form.submit') }}" />
-</div>
+<input type="submit" @isset($class)class="{{$class}}"@endif value="{{ $title ?? __('form.submit') }}" @isset($name)name="{{$name}}"@endif role="{{ $type ?? 'success'}}"/>
+

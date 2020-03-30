@@ -1,20 +1,28 @@
 @extends('layouts.admin')
 
-@section('page-title', 'Projecten')
+@section('page-title', 'Project beheer')
 
 @if($pages)
 	@section('content')
-		<div class="grid">
-			@foreach($pages as $project)
-				<div class="column-8-12 mobile-column-4-6">{{$project->title}}</div>
-				<div class="column-2-12 mobile-column-1-6">{{__('project.'.$project->status)}}</div>
-				<div class="column-1-12 mobile-column-1-6">
-					<a class="muted" href="{{route('project.edit', [$project->id])}}">Wijzig</a>
-				</div>
-				<div class="column-1-12 mobile-column-1-6">
-					<a class="muted" href="{{route('project.show', [$project->id])}}">Bekijk</a>
-				</div>
+    <table class="width-card-wide margin-level-auto">
+        <thead>
+            <tr>
+                <th class="max-width">Title</th>
+                <th>Status</th>
+                <th>Ouder</th>
+                <th></th>
+                <th><a class="color-bg muted" href="{{route('project.create')}}"><span class="icon icon-pen"></span></a></th>
+            </tr>
+        </thead>
+			@foreach($pages as $page)
+			<tr>
+				<td>{{$page->title}}</td>
+				<td>{{__('project.'.$page->status)}}</td>
+				<td><a href="{{route('page', $page->parent)}}">{{$page->parent}}</a></td>
+				<td><a class="muted" href="{{route('project.edit', [$page->id])}}">Wijzig</a></td>
+				<td><a class="muted" href="{{route('project.show', [$page->id])}}">Bekijk</a></td>
+			</tr>
 			@endforeach
-		</div>
+        </table>
 	@endsection
 @endif

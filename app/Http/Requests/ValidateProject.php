@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ValidateProject extends FormRequest
 {
@@ -13,7 +14,7 @@ class ValidateProject extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -23,11 +24,18 @@ class ValidateProject extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' =>'bail|require|alpha|unique:projects.name|max:25',
-            'parent' =>'require|alpha|exists:pages.name|max:25',
-            'title' =>'require|max:100',
-            'image' =>'require|image'
+        $rules = [
+            'name' =>' bail|filled|alpha|max:25|unique:projects',
+            'title' => 'filled|max:100',
+            'parent' => 'alpha|max:25',
+            'content' => 'filled|max:500',
+            'cover' => 'image',
+            'status' => 'alpha'
         ];
+
+        if ( isset($this->route('project')->id) )
+            $rules['name'] .= ',name,'.$this->route('project')->id;
+
+        return $rules;
     }
 }

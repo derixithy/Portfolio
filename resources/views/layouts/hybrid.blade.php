@@ -82,7 +82,6 @@
 
 			@yield('content')
 		</main>
-	@show
 
 
 	@section('footer')

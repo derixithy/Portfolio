@@ -25,18 +25,38 @@ body {
     border-top: 3px solid var(--color);
 }
 
-
-input:not([type="submit"]), textarea {
-    width: var(--width-card-medium);
-    max-width: 100%;
+nav .links a {
+    border-bottom: 3px solid rgba(0,0,0,0);
+    transition: border-color .4s;
+    padding-bottom: .4em;
+}
+nav .links a:hover {
+    border-bottom-color: var(--color-brand);
 }
 
+@auth
+nav.admin .links a {
+    padding-bottom: 1em;
+}
+nav.admin .links a:hover {
+    border-bottom-color: var(--color-bg);
+}
+
+input:not([type="submit"]), textarea {
+    width: calc(100% - 1.4em);
+    max-width: 100%;
+}
+textarea {
+    width: calc(100% - 2em);
+}
+@endif
 aside ul {
     list-style-type: none;
 }
 
 aside ul li.title {
     font-weight: bold;
+    margin-top: 1.2em;
 }
 
 aside ul li a {
@@ -46,9 +66,9 @@ aside ul li a {
 </head>
 
 <body>
-    <header class="margin-none padding-none max-width">
+    <header class="margin-none padding-none max-width muted">
         <nav class="margin-bottom-none width-content margin-level-auto padding-bottom-medium">
-            <ul>
+            <ul class="font-huge">
                 <a href="{{ url('/') }}">
                     <span class="icon icon-home"></span>
                 </a>
@@ -59,15 +79,15 @@ aside ul li a {
                     <a href="{{ route('page', $link->name) }}" @if(Route::currentRouteName() == 'page' and $page->name == $link->name) ) class="active"@endif>{{$link->title}}</a>
                 @endforeach
             </ul>
-            <ul>
+            <ul class="font-huge">
                 <a href="{{ route('search') }}" class="muted">
                     <span class="icon icon-magnifying"></span>
                 </a>
             </ul>
         </nav>
         @auth
-            <nav class="background-brand justify-center margin-bottom-large">
-                <ul class="text-center">
+            <nav class="admin background-brand justify-center margin-bottom-large">
+                <ul class="links text-center">
                     @foreach( $modules as $name => $title)
                     <li><a href="{{ route($name.'.index') }}" class="color-bg @if(Route::currentRouteName() == $name.'.index') active @endif">{!! $title !!}</a></li>
                     @endforeach

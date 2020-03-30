@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 //use Illuminate\Http\Request;
-use App\Http\Requests\ValidatePage;
+use App\Http\Requests\ValidateProject;
 
 class EditProjectController extends Controller
 {
@@ -37,7 +37,7 @@ class EditProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('project.create');
     }
 
     /**
@@ -48,7 +48,17 @@ class EditProjectController extends Controller
      */
     public function store(ValidateProject $request)
     {
-        //
+        $page = new Project();
+        $page->name = $request->get('name');
+        $page->title = $request->get('title');
+        $page->content = $request->get('content');
+
+        if(! $request->has('parent') )
+            $page->parent = 'projects';
+
+        $page->save();
+
+        return Redirect(route('project.edit', $page));
     }
 
     /**
@@ -59,7 +69,8 @@ class EditProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return (new \ProjectController())->show($project);
+        return (new ProjectController())->show($project->parent, $project);
+        //return Redirect(route('project', [$project->parent, $project->name]));
     }
 
     /**
@@ -70,7 +81,11 @@ class EditProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $data = [
+            'page' => $project,
+        ];
+
+        return view('project.edit')->with($data);
     }
 
     /**
@@ -82,7 +97,19 @@ class EditProjectController extends Controller
      */
     public function update(ValidateProject $request, Project $project)
     {
-        //
+        if ( $request->has('status') )
+            $project->status = $request->get('status');
+        else {
+            $project->name = $request->get('name');
+            $project->title = $request->get('title');
+            $project->content = $request->get('content');
+        }
+        $project->save();
+
+        if ( $request->has('view') )
+            return Redirect(route('project', [$project->parent, $project->name]));
+
+        return Redirect(route('project.edit', $project));
     }
 
     /**

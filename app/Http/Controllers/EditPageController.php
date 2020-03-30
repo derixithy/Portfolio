@@ -36,12 +36,7 @@ class EditPageController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => 'Pagina\'s',
-            'page' => new Page(),
-        ];
-
-        return view('page.create')->with($data);
+        return view('page.create');
     }
 
     /**
@@ -82,7 +77,6 @@ class EditPageController extends Controller
     public function edit(Page $page)
     {
         $data = [
-            'title' => 'Pagina\'s',
             'page' => $page,
         ];
 
@@ -98,7 +92,7 @@ class EditPageController extends Controller
      */
     public function update(ValidatePage $request, Page $page)
     {
-        if ($request->has('status') )
+        if ( $request->has('status') )
             $page->status = $request->get('status');
         else {
             $page->name = $request->get('name');
@@ -106,6 +100,10 @@ class EditPageController extends Controller
             $page->content = $request->get('content');
         }
         $page->save();
+
+        if ( $request->has('view') )
+            return Redirect(route('page', $page->name));
+
         return Redirect(route('page.edit', $page));
     }
 

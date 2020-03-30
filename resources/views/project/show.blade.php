@@ -6,7 +6,7 @@
 @section('content')
 	<article>
 		<div class="text">
-			{!! nl2br($page->description) !!}
+			{!! nl2br($page->content) !!}
 		</div>
 	</article>
 @endsection

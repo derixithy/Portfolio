@@ -1,7 +1,6 @@
-<div class="field no-border">
-	@isset($href)
-		<a class="button @isset($type){{$type}}@endif" href="{{$href}}">{{ $title }}</a>
-	@else
-    	<input @isset($type)class="{{$type}}" @endif type="button" value="{{ $title }}" />
-    @endif
-</div>
+
+@isset($href)
+	<a @isset($type)role="{{$type}}"@endif @isset($class)class="{{$class}}"@endif href="{{$href}}"><strong>{{ $title }}</strong></a>
+@else
+	<input @isset($type)role="{{$type}}" @endif @isset($class)class="{{$class}}"@endif type="button" value="{{ $title }}" />
+@endif
