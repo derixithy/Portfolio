@@ -3,7 +3,7 @@
 @section('page-title', 'Nieuw project')
 
 @section('content')
-	<form class="form" method="POST" action="{{ route('project.store') }}">
+	<form class="form" id="post" method="POST" action="{{ route('project.store') }}">
 		@csrf
 		<div grid>
 			<div column="eight">
@@ -33,4 +33,18 @@
 		])
 		<div class="clearfix"></div>
 	</form>
+@endsection
+
+
+
+@section('footer')
+	@parent('footer')
+<script type="text/javascript">
+// Save page on ctrl+s
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.key === 's') {
+    e.preventDefault();
+    document.getElementById('post').submit();
+  }
+</script>
 @endsection

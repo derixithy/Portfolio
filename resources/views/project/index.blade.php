@@ -11,7 +11,7 @@
                 <th>Status</th>
                 <th>Ouder</th>
                 <th></th>
-                <th><a class="color-bg muted" href="{{route('project.create')}}"><span class="icon icon-pen"></span></a></th>
+                <th><a class="color-bg muted" href="{{route('project.create')}}"><span class="icon icon-sheet"></span></a></th>
             </tr>
         </thead>
 			@foreach($pages as $page)

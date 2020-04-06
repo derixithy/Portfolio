@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use Illuminate\Http\RedirectResponse;
+
 use App\Http\Requests\ValidatePage;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class EditPageController extends Controller
 {
@@ -94,11 +97,17 @@ class EditPageController extends Controller
     {
         if ( $request->has('status') )
             $page->status = $request->get('status');
-        else {
+
+        if ( $request->has('cover') )
+            $page->cover = Storage::putFile('covers', new File($request->cover, 'public'));
+            //$page->cover = $request->file('cover')->store('covers');
+
+        if ( $request->has('title') ) {
             $page->name = $request->get('name');
             $page->title = $request->get('title');
             $page->content = $request->get('content');
         }
+
         $page->save();
 
         if ( $request->has('view') )

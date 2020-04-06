@@ -25,6 +25,9 @@ body {
     border-top: 3px solid var(--color);
 }
 
+nav li a {
+    font-weight: normal;
+}
 nav .links a {
     border-bottom: 3px solid rgba(0,0,0,0);
     transition: border-color .4s;

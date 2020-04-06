@@ -3,7 +3,7 @@
 @section('page-title', 'Wijzigen')
 
 @section('content')
-<form method="POST" action="{{ route('page.update', $page->id) }}">
+<form method="POST" id="post" action="{{ route('page.update', $page->id) }}">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -43,6 +43,26 @@
 	])
 	<div class="clearfix"></div>
 </form>
+<form method="POST" id="post" action="{{ route('page.update', $page->id) }}"  enctype="multipart/form-data">
+	@method('patch')
+	@csrf
+		<div grid>
+			<div column="twelve">
+				<img src="{{url('cover/'.basename($page->cover))}}" style="max-width: 100%" />
+			</div>
+			<div column="twelve">
+	@input([
+		'type' =>'file',
+		'required' => true,
+		'name' =>'cover',
+	])
+	@submit([
+		'title' => 'Upload',
+		'class' => 'margin-left-small float-right',
+	])
+		</div>
+	</div>
+</form>
 @endsection
 @section('aside')
 	<ul class="menu">
@@ -80,9 +100,16 @@
 	])
 </form>
 <script type="text/javascript">
-	function updateStatus($status) {
-		 document.getElementById('status').value = $status;
-		 document.getElementById('update').submit();
-	}
+function updateStatus($status) {
+	 document.getElementById('status').value = $status;
+	 document.getElementById('update').submit();
+}
+
+// Save page on ctrl+s
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.key === 's') {
+    e.preventDefault();
+    document.getElementById('post').submit();
+  }
 </script>
 @endsection

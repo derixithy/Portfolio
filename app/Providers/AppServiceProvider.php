@@ -46,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
 		Blade::include('auth.form.remember',            'authRemember');
 		Blade::include('auth.form.submit',              'authSubmit');
 
+		Blade::include('shared.form.input',              'input');
 		Blade::include('shared.form.text',              'text');
 		Blade::include('shared.form.textarea',          'textarea');
 		Blade::include('shared.form.checkbox',          'checkbox');

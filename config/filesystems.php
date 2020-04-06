@@ -55,14 +55,20 @@ return [
             'visibility' => 'public',
         ],
 
-        's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
+        'covers' => [
+            'driver' => 'local',
+            'root' => storage_path('app/covers'),
+            'url' => env('APP_URL').'/cover',
+            'visibility' => 'public',
         ],
+
+        'albums' => [
+            'driver' => 'local',
+            'root' => storage_path('app/albums'),
+            'url' => env('APP_URL').'/album',
+            'visibility' => 'public',
+        ],
+
 
     ],
 
@@ -79,6 +85,8 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('cover') => storage_path('app/covers'),
+        public_path('album') => storage_path('app/albums'),
     ],
 
 ];

@@ -3,7 +3,7 @@
 @section('page-title', 'Wijzigen')
 
 @section('content')
-<form method="POST" action="{{ route('project.update', $page->id) }}">
+<form method="POST" id="post" action="{{ route('project.update', $page->id) }}">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -90,9 +90,18 @@
 	])
 </form>
 <script type="text/javascript">
-	function updateStatus($status) {
-		 document.getElementById('status').value = $status;
-		 document.getElementById('update').submit();
-	}
+function updateStatus($status) {
+	 document.getElementById('status').value = $status;
+	 document.getElementById('update').submit();
+}
+
+
+// Save page on ctrl+s
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.key === 's') {
+    e.preventDefault();
+    document.getElementById('post').submit();
+  }
+});
 </script>
 @endsection
