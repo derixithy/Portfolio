@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @section('head')
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +20,10 @@
 
     <!-- Icons -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/icons.css') }}">
+    @show
 
 <style>
+    @section('css')
 body {
     border-top: 3px solid var(--color);
 }
@@ -65,6 +68,15 @@ aside ul li.title {
 aside ul li a {
     font-weight: normal;
 }
+
+.cover {
+    max-height: 300px;
+    overflow: hidden;
+}
+.cover img {
+    width: 100%;
+}
+    @show
 </style>
 </head>
 
@@ -89,7 +101,7 @@ aside ul li a {
             </ul>
         </nav>
         @auth
-            <nav class="admin background-brand justify-center margin-bottom-large">
+            <nav class="admin background-brand justify-center margin-bottom-none">
                 <ul class="links text-center">
                     @foreach( $modules as $name => $title)
                     <li><a href="{{ route($name.'.index') }}" class="color-bg @if(Route::currentRouteName() == $name.'.index') active @endif">{!! $title !!}</a></li>
@@ -97,6 +109,11 @@ aside ul li a {
                 </ul>
             </nav>
         @endauth
+        @if(isset($page->cover) and file_exists('cover/'.basename($page->cover)))
+            <div class="cover margin-bottom-large">
+                <img src="{{url('cover/'.basename($page->cover))}}" />
+            </div>
+        @endif
     </header>
 
     @include('shared.errors')
