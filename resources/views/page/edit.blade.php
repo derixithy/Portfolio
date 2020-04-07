@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('page-title', 'Wijzigen')
+@section('cover', url('cover/'.basename($page->cover)))
 
 @section('css')
 	@parent
@@ -63,9 +64,6 @@
 	@csrf
 		<div grid>
 			<div column="twelve">
-				<img src="{{url('cover/'.basename($page->cover))}}" style="max-width: 100%" />
-			</div>
-			<div column="twelve">
 	@input([
 		'type' =>'file',
 		'required' => true,
@@ -100,7 +98,6 @@
 		<li class="title">Wijzig</li>
 		<li class="tablink hide" onclick="openTab(event, 'post')">Post</li>
 		<li class="tablink" onclick="openTab(event, 'upload')">Cover</li>
-		<li><a href="#">Tags</a></li>
 	</ul>
 @endsection
 

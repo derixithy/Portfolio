@@ -109,9 +109,9 @@ aside ul li a {
                 </ul>
             </nav>
         @endauth
-        @if(isset($page->cover) and file_exists('cover/'.basename($page->cover)))
+        @hasSection('cover')
             <div class="cover margin-bottom-large">
-                <img src="{{url('cover/'.basename($page->cover))}}" />
+                <img src="@yield('cover')" />
             </div>
         @endif
     </header>
