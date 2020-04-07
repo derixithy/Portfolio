@@ -1,12 +1,13 @@
-@extends('layouts.hybrid')
+@extends('layouts.prototype')
 
 @section('page-title', $page->title)
-@section('cover', $page->cover)
+@section('cover', 'cover/'.basename($page->cover))
 
 @section('content')
 	<article>
 		<div class="text">
-			{!! nl2br($page->content) !!}
+			@markdown($page->content)
+			<!--{!! nl2br($page->content) !!}-->
 		</div>
 	</article>
 @if($projects)
