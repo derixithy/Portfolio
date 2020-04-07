@@ -10,7 +10,7 @@
                 <th class="max-width">Title</th>
                 <th>Status</th>
                 <th></th>
-                <th><a class="color-bg" href="{{route('page.create')}}">Nieuw</a></th>
+                <th><a class="color-bg" href="{{route('page.create')}}"><span class="icon icon-sheet"></span></a></th>
             </tr>
         </thead>
 			@foreach($pages as $page)
