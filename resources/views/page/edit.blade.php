@@ -2,8 +2,23 @@
 
 @section('page-title', 'Wijzigen')
 
+@section('css')
+	@parent
+
+.tabcontent, .hide {
+	display: none;
+}
+.tablink {
+	cursor: pointer;
+}
+.tablink:hover {
+	text-decoration: underline;
+}
+@endsection
+
 @section('content')
-<form method="POST" id="post" action="{{ route('page.update', $page->id) }}">
+
+<form method="POST" id="post" class="tabcontent" action="{{ route('page.update', $page->id) }}" style="display:block;">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -43,7 +58,7 @@
 	])
 	<div class="clearfix"></div>
 </form>
-<form method="POST" id="post" action="{{ route('page.update', $page->id) }}"  enctype="multipart/form-data">
+<form method="POST" id="upload" class="tabcontent" action="{{ route('page.update', $page->id) }}"  enctype="multipart/form-data">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -83,7 +98,8 @@
 			</li>
 		@endif
 		<li class="title">Wijzig</li>
-		<li><a href="#">Cover</a></li>
+		<li class="tablink hide" onclick="openTab(event, 'post')">Post</li>
+		<li class="tablink" onclick="openTab(event, 'upload')">Cover</li>
 		<li><a href="#">Tags</a></li>
 	</ul>
 @endsection
@@ -111,5 +127,24 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     document.getElementById('post').submit();
   }
+});
+
+function openTab($event, $tab) {
+	var tabs, links;
+	$event.preventDefault();
+
+	tabs = document.getElementsByClassName('tabcontent');
+	for (i = 0; i < tabs.length; i++) {
+		tabs[i].style.display = "none";
+	}
+
+	links = document.getElementsByClassName('tablink')
+	for (i = 0; i < links.length; i++) {
+		links[i].className = links[i].className.replace(" hide", "");
+	}
+
+	document.getElementById( $tab ).style.display = "block";
+	$event.currentTarget.className += " hide";
+}
 </script>
 @endsection
