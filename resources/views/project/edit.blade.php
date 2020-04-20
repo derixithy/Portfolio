@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<form method="POST" id="post" class="tabcontent" action="{{ route('project.update', $page->id) }}" style="display:block;">
+<form method="POST" id="post" class="tabcontent width-card-wide" action="{{ route('project.update', $page->id) }}" style="display:block;">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -65,7 +65,7 @@
 	])
 	<div class="clearfix"></div>
 </form>
-<form method="POST" id="upload" class="tabcontent" action="{{ route('project.update', $page->id) }}"  enctype="multipart/form-data">
+<form method="POST" id="upload" class="tabcontent width-card-wide" action="{{ route('project.update', $page->id) }}"  enctype="multipart/form-data">
 	@method('patch')
 	@csrf
 		<div grid>
@@ -82,17 +82,18 @@
 		</div>
 	</div>
 </form>
-<form method="POST" id="parent" class="tabcontent" action="{{ route('project.update', $page->id) }}">
+<form method="POST" id="placement" class="tabcontent width-card-medium" action="{{ route('project.update', $page->id) }}">
 	@method('patch')
 	@csrf
-		<div grid>
-			<div column="twelve">
+		<div class="width-max" grid>
+			<div column="eight">
 				<select id="parent" name="parent">
 					@foreach( \App\Page::list()->get() as $item )
 						<option value="{{$item->name}}">{{$item->title}}</option>
 					@endforeach
 				</select>
-	
+			</div>
+			<div column="two">
 	@submit([
 		'title' => 'Update',
 		'class' => 'margin-left-small float-right',
@@ -132,7 +133,7 @@
 		<li class="title">Wijzig</li>
 		<li class="tablink hide" onclick="openTab(event, 'post')">Post</li>
 		<li class="tablink" onclick="openTab(event, 'upload')">Cover</li>
-		<li class="tablink" onclick="openTab(event, 'parent')">Ouder</li>
+		<li class="tablink" onclick="openTab(event, 'placement')">Ouder</li>
 		<li class="tablink" onclick="openTab(event, 'tags')">Tags</li>
 	</ul>
 @endsection
