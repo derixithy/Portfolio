@@ -46,5 +46,19 @@ document.addEventListener('keydown', e => {
     e.preventDefault();
     document.getElementById('post').submit();
   }
+});
+
+//document.addEventListener('keypress', writeSlug);
+document.getElementById('title').onkeyup = writeSlug;
+
+function writeSlug($event) {
+	$from = document.getElementById('title');
+	$to = document.getElementById('name');
+	let $text = $from.value;
+
+	$to.value = $text.replace(/\s+/g, '').toLowerCase();
+}
+
+
 </script>
 @endsection
