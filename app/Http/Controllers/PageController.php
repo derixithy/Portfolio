@@ -13,12 +13,12 @@ class PageController extends Controller
     public function show($slug = 'over', \App\Page $page = null)
     {
         $page = $page ?: \App\Page::published()->whereName($slug)->first();
-        $projects = \App\Project::whereParent($slug)->get();
+        //$projects = \App\Project::whereParent($slug)->get();
 
         if ( $page )
         	return \View::make('page.show')
         		->with('page', $page)
-        		->with('projects', $projects)
+        		->with('projects', $page->projects)
         		->with('slug', $slug);
 
         throw new NotFoundHttpException;

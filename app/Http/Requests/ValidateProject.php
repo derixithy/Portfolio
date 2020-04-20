@@ -29,7 +29,7 @@ class ValidateProject extends FormRequest
             'title' => 'filled|max:100',
             'parent' => 'alpha|max:25',
             'content' => 'filled|max:500',
-            'cover' => 'image',
+            'cover' => 'image|mimes:jpeg,png,jpg,gif',
             'status' => 'alpha'
         ];
 

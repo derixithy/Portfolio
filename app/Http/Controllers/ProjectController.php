@@ -10,14 +10,14 @@ class ProjectController extends Controller
     //
 
     // Show a page by name
-    public function show($name, \App\Project $page = null)
+    public function show($name, $page = null)
     {
-        $page = $page ?: \App\Project::published()->whereName($name)->first();
+        $page = \App\Project::published()->whereName($page)->first() ?: \App\Project::list()->whereName($name)->first();
 
         if ( $page )
         	return \View::make('project.show')
         		->with('page', $page);
-
-        throw new NotFoundHttpException;
+                echo ">>$name";
+        //throw new NotFoundHttpException;
     }
 }
