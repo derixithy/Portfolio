@@ -7,7 +7,6 @@
 	<article>
 		<div class="text">
 			@markdown($page->content)
-			<!--{!! nl2br($page->content) !!}-->
 		</div>
 	</article>
 @if($projects)
