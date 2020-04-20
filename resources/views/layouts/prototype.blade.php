@@ -132,12 +132,12 @@ aside ul li a {
 
     @section('footer')
         <footer class="text-center">
-            <p>&copy; Copyright 2020 - Eddie Gjaltema @auth - <a href="{{ route('logout') }}" class="muted">{{__('logout')}}</a> @else - <a href="{{ route('login') }}" class="muted">{{__('login')}}</a> @endauth</p>
+            <p>&copy; Copyright 2020 - Eddie Gjaltema @auth - <a href="{{ route('logout') }}" class="muted" onclick="event.preventDefault(); document.getElementById('logout').submit();">{{__('logout')}}</a> @else - <a href="{{ route('login') }}" class="muted">{{__('login')}}</a> @endauth</p>
         </footer>
     @show
 
     @auth
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
     @endauth
