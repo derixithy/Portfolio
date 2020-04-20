@@ -35,4 +35,9 @@ class Project extends Model
         return $this->belongsTo('\App\Page', 'name', 'name');
     }
 
+    public function tags()
+    {
+        return $this->morphToMany('\App\Tag', 'taggable');
+    }
+
 }
