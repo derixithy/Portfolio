@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Project;
 //use Illuminate\Http\Request;
 use App\Http\Requests\ValidateProject;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class EditProjectController extends Controller
 {
@@ -13,6 +15,9 @@ class EditProjectController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +35,8 @@ class EditProjectController extends Controller
         return view('project.index')->with($data);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,6 +46,8 @@ class EditProjectController extends Controller
     {
         return view('project.create');
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -61,6 +70,8 @@ class EditProjectController extends Controller
         return Redirect(route('project.edit', $page));
     }
 
+
+
     /**
      * Display the specified resource.
      *
@@ -72,6 +83,8 @@ class EditProjectController extends Controller
         return (new ProjectController())->show($project->parent, $project);
         //return Redirect(route('project', [$project->parent, $project->name]));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -88,6 +101,8 @@ class EditProjectController extends Controller
         return view('project.edit')->with($data);
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -99,18 +114,33 @@ class EditProjectController extends Controller
     {
         if ( $request->has('status') )
             $project->status = $request->get('status');
-        else {
+
+        if ( $request->has('cover') )
+            $project->cover = Storage::putFile('covers',
+                new File($request->cover, 'public')
+            );
+
+        if ( $request->has('title') ) {
             $project->name = $request->get('name');
             $project->title = $request->get('title');
             $project->content = $request->get('content');
+            $project->parent = $request->get('parent');
         }
+
         $project->save();
 
         if ( $request->has('view') )
-            return Redirect(route('project', [$project->parent, $project->name]));
+            return Redirect(
+                route('project', [
+                    'name' => $project->parent,
+                    'project' => $project->name
+                ])
+            );
 
         return Redirect(route('project.edit', $project));
     }
+
+
 
     /**
      * Remove the specified resource from storage.
