@@ -21,6 +21,14 @@ Auth::routes();
 
 
 
+
+Route::match(['get', 'post'], '/zoek.html', 'SearchController@show')
+	->name('search');
+
+Route::get('tagged/{name}.html', 'TagController@show')
+	->where('name', '[A-Za-z]+')
+	->name('tag');
+
 Route::get('{name}.html', 'PageController@show')
 	->where('name', '[A-Za-z]+')
 	->name('page');
@@ -29,13 +37,6 @@ Route::get('{name}.html', 'PageController@show')
 	->where('name', '[A-Za-z]+')
 	->where('project', '[A-Za-z]+')
 	->name('project');
-
-Route::get('tag/{name}.html', 'TagController@show')
-	->where('name', '[A-Za-z]+')
-	->name('tag');
-
-Route::match(['get', 'post'], '/zoek.html', 'SearchController@show')
-	->name('search');
 
 
 /*
