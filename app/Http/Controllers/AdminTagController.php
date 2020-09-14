@@ -27,7 +27,7 @@ class AdminTagController extends Controller
     {
         $data = [
             'title' => 'Tags',
-            'pages' => Tag::list()->get(),
+            'tags' => Tag::list()->get(),
         ];
 
 
@@ -44,7 +44,7 @@ class AdminTagController extends Controller
      */
     public function create()
     {
-        return view('project.create');
+        return view('tag.create');
     }
 
 
@@ -57,17 +57,13 @@ class AdminTagController extends Controller
      */
     public function store(ValidateProject $request)
     {
-        $page = new Project();
-        $page->name = $request->get('name');
-        $page->title = $request->get('title');
-        $page->content = $request->get('content');
+        $tag = new Tag();
+        $tag->name = $request->get('name');
+        $tag->title = $request->get('title');
 
-        if(! $request->has('parent') )
-            $page->parent = 'projects';
+        $tag->save();
 
-        $page->save();
-
-        return Redirect(route('project.edit', $page));
+        return Redirect(route('tag.edit', $tag));
     }
 
 
@@ -75,13 +71,12 @@ class AdminTagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Tag $tag)
     {
-        return (new ProjectController())->show($project->parent, $project);
-        //return Redirect(route('project', [$project->parent, $project->name]));
+        return (new TagController())->show($tag->id, $tag);
     }
 
 
@@ -89,16 +84,16 @@ class AdminTagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Tag $tag)
     {
         $data = [
-            'page' => $project,
+            'tag' => $tag,
         ];
 
-        return view('project.edit')->with($data);
+        return view('tag.edit')->with($data);
     }
 
 
@@ -107,37 +102,17 @@ class AdminTagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Project  $project
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidateProject $request, Project $project)
+    public function update(ValidateProject $request, Tag $tag)
     {
-        if ( $request->has('status') )
-            $project->status = $request->get('status');
+        $tag->name = $request->get('name');
+        $tag->title = $request->get('title');
 
-        if ( $request->has('cover') )
-            $project->cover = Storage::putFile('covers',
-                new File($request->cover, 'public')
-            );
+        $tag->save();
 
-        if ( $request->has('title') ) {
-            $project->name = $request->get('name');
-            $project->title = $request->get('title');
-            $project->content = $request->get('content');
-            $project->parent = $request->get('parent');
-        }
-
-        $project->save();
-
-        if ( $request->has('view') )
-            return Redirect(
-                route('project', [
-                    'name' => $project->parent,
-                    'project' => $project->name
-                ])
-            );
-
-        return Redirect(route('project.edit', $project));
+        return Redirect(route('tag.edit', $tag));
     }
 
 
@@ -145,10 +120,10 @@ class AdminTagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Project $tag)
     {
         //
     }
