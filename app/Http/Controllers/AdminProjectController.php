@@ -127,7 +127,16 @@ class AdminProjectController extends Controller
             $project->parent = $request->get('parent');
         }
 
-        $project->save();
+        if ( $request->has('tag') ) {
+            $tag = \App\Tag::find($request->get('tag'));
+
+            if ($request->has('delete'))
+                $project->tags()->detach($tag);
+            else
+                $project->tags()->save($tag);
+        }
+        else
+            $project->save();
 
         if ( $request->has('view') )
             return Redirect(
