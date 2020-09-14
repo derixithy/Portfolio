@@ -5,8 +5,10 @@
 
 @section('css')
 @parent
-.project img { width: 100%; max-height: 100%; }
-.tags { list-style-type: none; }
+.poster { background-size:cover; height: 8em;}
+.tags { list-style-type: none; padding-left: 0px; }
+.tags li { display: inline; }
+.tags li a { margin-left: 5px; }
 @endsection
 
 @section('content')
@@ -15,7 +17,11 @@
 			@markdown($page->content)
 		</div>
 	</article>
+@endsection
+
+
 @if($projects)
+@section('append')
 	<div class="margin-bottom-huge"></div>
 	<div grid>
 		@foreach($page->projects as $project)
@@ -23,8 +29,7 @@
 			<a href="{{ route('project', [$slug, $project->name]) }}" class="muted">
 				<div class="post">
 					<div class="card hover">
-						<div class="poster">
-							<img src="{{$project->cover ? '/cover/'.basename($project->cover) : 'img/cover.jpg'}}" style="width:100%; max-height:100%"/>
+						<div class="poster" style="background-image: url({{$project->cover ? '/cover/'.basename($project->cover) : 'img/cover.jpg'}})">
 						</div>
 						<div class="title">
 							<span>{{ $project->title }}</span>
@@ -32,7 +37,9 @@
 					</div>
 					<ul class="tags">
 						@foreach( $project->tags as $tag)
-						<li><a href="{{$tag->url}}">{{$tag->title}}</a></li>
+						<li class="icon icon-label">
+							<a href="{{$tag->url}}">{{$tag->title}}</a>
+						</li>
 						@endforeach
 					</ul>
 				</div>
@@ -40,5 +47,5 @@
 		</div>
 		@endforeach
 	</div>
+	@endsection
 @endif
-@endsection

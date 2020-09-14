@@ -127,6 +127,7 @@ aside ul li a {
                 
                 @yield('content')
             </section>
+                @yield('append')
         </main>
     @show
 
