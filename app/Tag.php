@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
+
+    public static function scopeList( $query )
+    {
+        return $query;
+    }
+
     /**
      * Get all of the posts that are assigned this tag.
      */
