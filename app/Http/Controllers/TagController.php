@@ -10,7 +10,7 @@ class TagController extends Controller
     //
 
     // Show a page by slug
-    public function show($slug = 'over', \App\Tag $tag = null)
+    public function show($slug, \App\Tag $tag = null)
     {
         $tag = $tag ?: \App\Tag::whereName($slug)->first();
 

@@ -14,6 +14,14 @@
 .tablink:hover {
 	text-decoration: underline;
 }
+.hide-two:nth-child(2) {
+	display: none;
+}
+
+form.background {
+	background: inherit;
+	border: none;
+}
 @endsection
 
 @section('content')
@@ -89,7 +97,7 @@
 			<div column="eight">
 				<select id="parent" name="parent">
 					@foreach( \App\Page::list()->get() as $item )
-						<option value="{{$item->name}}">{{$item->title}}</option>
+						<option value="{{$item->name}}" @if($item->name == $page->name) selected @endif>{{$item->title}}</option>
 					@endforeach
 				</select>
 			</div>
@@ -101,6 +109,40 @@
 		</div>
 	</div>
 </form>
+<div id="tags" class="tabcontent width-card-medium">
+		<div class="width-max" grid>
+			@foreach( \App\Tag::list()->get() as $item )
+				<div column="four">
+					{{$item->title}}
+				</div>
+				<div column="eight">
+					<form class="background" method="POST" action="{{ route('project.update', $page->id) }}">
+						@foreach($page->tags as $tag)
+							@if( $tag->id == $item->id)
+						@submit([
+							'title' => 'Verwijder',
+							'name' => 'delete',
+							'class' => 'margin-left-small float-right hide-two',
+							'type' => 'alert',
+						])
+							@endif
+						@endforeach
+						@submit([
+							'title' => 'Toevoegen',
+							'name' => 'add',
+							'class' => 'margin-left-small float-right hide-two',
+						])
+						@hidden([
+							'name' => 'tag',
+							'value' => $item->id
+						])
+						@method('patch')
+						@csrf
+					</form>
+				</div>
+			@endforeach
+		</div>
+</div>
 @endsection
 @section('aside')
 	<ul class="menu">
@@ -168,18 +210,28 @@ function openTab($event, $tab) {
 	var tabs, links;
 	$event.preventDefault();
 
-	tabs = document.getElementsByClassName('tabcontent');
-	for (i = 0; i < tabs.length; i++) {
-		tabs[i].style.display = "none";
-	}
-
 	links = document.getElementsByClassName('tablink')
 	for (i = 0; i < links.length; i++) {
 		links[i].className = links[i].className.replace(" hide", "");
 	}
 
-	document.getElementById( $tab ).style.display = "block";
+	switchTab($tab);
+
 	$event.currentTarget.className += " hide";
 }
+
+function switchTab( $tab ) {
+	tabs = document.getElementsByClassName('tabcontent');
+	for (i = 0; i < tabs.length; i++) {
+		tabs[i].style.display = "none";
+	}
+
+	document.getElementById( $tab ).style.display = "block";
+}
+(function(){
+	if (window.location.hash)
+
+		switchTab(window.location.hash)
+})
 </script>
 @endsection

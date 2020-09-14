@@ -3,15 +3,27 @@
 @section('page-title', $page->title)
 @section('cover', url('cover/'.basename($page->cover)))
 
+
+@section('css')
+@parent
+.tags { list-style-type: none; padding-left: 0px; }
+.tags li { display: inline; }
+.tags li a { margin-left: 5px; }
+@endsection
+
 @section('content')
 	<article>
 		<div class="text">
 			@markdown($page->content)
 		</div>
 		<span class="tags">
-			@foreach($page->tags as $tag)
-			<a href="/tagged/{{$tag->name}}">{{ $tag->title }}</a>
-			@endforeach
+			<ul class="tags">
+				@foreach( $page->tags as $tag)
+				<li class="icon icon-label">
+					<a href="{{route('tag', $tag->name)}}">{{$tag->title}}</a>
+				</li>
+				@endforeach
+			</ul>
 		</span>
 	</article>
 @endsection
