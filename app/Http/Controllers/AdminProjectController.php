@@ -8,7 +8,7 @@ use App\Http\Requests\ValidateProject;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
-class EditProjectController extends Controller
+class AdminProjectController extends Controller
 {
 
     public function __construct()

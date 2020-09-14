@@ -44,10 +44,10 @@ Route::match(['get', 'post'], '/zoek.html', 'SearchController@show')
  ****************************************************************/
 Route::prefix('admin')->group(function(){
 	Route::resources([
-	    'page' => 'EditPageController',
-	    'project' => 'EditProjectController',
-	    'user' => 'EditUserController',
-	    'tag' => 'TagController',
+	    'page' => 'AdminPageController',
+	    'project' => 'AdminProjectController',
+	    'user' => 'AdminUserController',
+	    'tag' => 'AdminTagController',
 	    'trash' => 'TrashController'
 	]);
 });//->middleware('auth');

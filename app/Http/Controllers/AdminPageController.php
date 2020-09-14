@@ -9,7 +9,7 @@ use App\Http\Requests\ValidatePage;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
-class EditPageController extends Controller
+class AdminPageController extends Controller
 {
 
     public function __construct()
