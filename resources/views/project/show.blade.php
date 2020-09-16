@@ -7,7 +7,7 @@
 @section('css')
 @parent
 .tags { list-style-type: none; padding-left: 0px; }
-.tags li { display: inline; }
+.tags li { display: inline; margin-right: 16px; }
 .tags li a { margin-left: 5px; }
 @endsection
 
