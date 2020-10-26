@@ -29,6 +29,10 @@ Route::get('tagged/{name}.html', 'TagController@show')
 	->where('name', '[A-Za-z]+')
 	->name('tag');
 
+Route::get('album/{name}.html', 'AlbumController@show')
+	->where('name', '[A-Za-z]+')
+	->name('album');
+
 Route::get('{name}.html', 'PageController@show')
 	->where('name', '[A-Za-z]+')
 	->name('page');
@@ -48,6 +52,7 @@ Route::prefix('admin')->group(function(){
 	    'page' => 'AdminPageController',
 	    'project' => 'AdminProjectController',
 	    'user' => 'AdminUserController',
+	    'album' => 'AdminAlbumController',
 	    'tag' => 'AdminTagController',
 	    'trash' => 'TrashController'
 	]);
